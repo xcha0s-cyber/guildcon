@@ -1,0 +1,88 @@
+// Prisma data model for CFP submissions, CTF registrations, teams, and bracket.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model CfpSubmission {
+  id         Int       @id @default(autoincrement())
+  name       String
+  email      String
+  title      String
+  abstract   String
+  track      Track
+  status     CfpStatus @default(new)
+  notes      String?   // internal admin notes
+  createdAt  DateTime  @default(now())
+}
+
+enum Track {
+  Talk
+  Workshop
+}
+
+enum CfpStatus {
+  new
+  review
+  accepted
+  waitlist
+  rejected
+}
+
+model CtfPlayer {
+  id         Int       @id @default(autoincrement())
+  name       String
+  email      String
+  handle     String
+  status     PlayerStatus @default(registered)
+  createdAt  DateTime  @default(now())
+  teamId     Int?
+  team       CtfTeam?  @relation(fields: [teamId], references: [id])
+}
+
+enum PlayerStatus {
+  registered
+  waitlist
+  withdrawn
+}
+
+model CtfTeam {
+  id        Int        @id @default(autoincrement())
+  name      String
+  seed      Int?       // 1..8 if used for bracket seeding
+  players   CtfPlayer[]
+}
+
+model CtfMatch {
+  id           Int       @id @default(autoincrement())
+  round        MatchRound
+  indexInRound Int       // 1..N for ordering
+  teamAId      Int?
+  teamBId      Int?
+  teamA        CtfTeam?  @relation("teamA", fields: [teamAId], references: [id])
+  teamB        CtfTeam?  @relation("teamB", fields: [teamBId], references: [id])
+  scoreA       Int?
+  scoreB       Int?
+  winnerId     Int?
+  winner       CtfTeam?  @relation("winner", fields: [winnerId], references: [id])
+  nextMatchId  Int?
+  nextMatch    CtfMatch? @relation("next", fields: [nextMatchId], references: [id])
+  nextSlot     NextSlot?
+}
+
+enum MatchRound {
+  QF
+  SF
+  F
+}
+
+enum NextSlot {
+  A
+  B
+}
+
