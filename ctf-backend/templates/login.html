@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Login - Guild Con CTF{% endblock %}
+
+{% block content %}
+<div style="max-width: 400px; margin: 4rem auto;">
+    <h2 style="color: #00d4aa; margin-bottom: 2rem;">Admin Login</h2>
+
+    <form method="POST">
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required autofocus>
+        </div>
+
+        <button type="submit" class="btn">Login</button>
+    </form>
+</div>
+{% endblock %}

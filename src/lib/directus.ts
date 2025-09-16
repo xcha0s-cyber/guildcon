@@ -1,7 +1,9 @@
 // Minimal REST helpers to talk to Directus using a service token.
 
 const BASE = process.env.DIRECTUS_URL || 'http://localhost:8055'
-const TOKEN = process.env.DIRECTUS_TOKEN || ''
+const RAW_TOKEN = process.env.DIRECTUS_TOKEN || ''
+// Treat placeholder/empty as no token
+const TOKEN = RAW_TOKEN && RAW_TOKEN !== 'service-token-to-create' ? RAW_TOKEN : ''
 
 type FetchOpts = {
   method?: 'GET'|'POST'|'PATCH'|'DELETE'
@@ -12,12 +14,11 @@ type FetchOpts = {
 export async function dx(path: string, opts: FetchOpts = {}) {
   const url = new URL(path.replace(/^\/+/, ''), BASE + '/')
   if (opts.search) for (const [k,v] of Object.entries(opts.search)) if (v !== undefined) url.searchParams.set(k, String(v))
+  const headers: Record<string,string> = { 'Content-Type': 'application/json' }
+  if (TOKEN) headers['Authorization'] = `Bearer ${TOKEN}`
   const res = await fetch(url, {
     method: opts.method ?? 'GET',
-    headers: {
-      'Authorization': TOKEN ? `Bearer ${TOKEN}` : '',
-      'Content-Type': 'application/json'
-    },
+    headers,
     body: opts.body ? JSON.stringify(opts.body) : undefined,
     // Revalidate quickly by default
     next: { revalidate: 30 }
@@ -47,7 +48,7 @@ export const CtfAPI = {
   patchTeam: (id: number, data: any) => dx(`/items/ctf_teams/${id}`, { method: 'PATCH', body: data }),
   patchPlayer: (id: number, data: any) => dx(`/items/ctf_players/${id}`, { method: 'PATCH', body: data }),
   listMatches: () => dx('/items/ctf_matches', { search: { sort: 'round,index_in_round' } }),
+  getMatch: (id: number) => dx(`/items/ctf_matches/${id}`),
   createMatch: (data: any) => dx('/items/ctf_matches', { method: 'POST', body: data }),
   patchMatch: (id: number, data: any) => dx(`/items/ctf_matches/${id}`, { method: 'PATCH', body: data }),
 }
-

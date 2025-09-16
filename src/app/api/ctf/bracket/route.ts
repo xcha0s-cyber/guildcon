@@ -1,4 +1,5 @@
 import { CtfAPI } from '@/lib/directus'
+export const dynamic = 'force-dynamic'
 
 function isAdmin(req: Request) {
   const token = process.env.ADMIN_TOKEN || ''
@@ -38,4 +39,3 @@ export async function POST(req: Request) {
 
   return Response.json({ ok:true })
 }
-

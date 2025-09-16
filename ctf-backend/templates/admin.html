@@ -1,0 +1,222 @@
+{% extends "base.html" %}
+
+{% block title %}Admin - Guild Con CTF{% endblock %}
+
+{% block content %}
+<div class="nav">
+    <a href="/">View Public Bracket</a>
+    <a href="/admin/logout">Logout</a>
+</div>
+
+<h2 style="color: #00d4aa; margin-bottom: 2rem;">CTF Admin Dashboard</h2>
+
+<!-- Import Players -->
+<section style="margin-bottom: 3rem;">
+    <h3 style="color: #00d4aa;">1. Import Players from CSV</h3>
+    <form id="importForm" enctype="multipart/form-data">
+        <div class="form-group">
+            <input type="file" name="csv_file" accept=".csv" required>
+        </div>
+        <button type="submit" class="btn">Import Players</button>
+    </form>
+    <div id="importMessage"></div>
+</section>
+
+<!-- Players List -->
+<section style="margin-bottom: 3rem;">
+    <h3 style="color: #00d4aa;">2. Check In Players ({{ data.players|length }} total)</h3>
+    {% if data.players %}
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Checked In</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for player in data.players %}
+            <tr>
+                <td>{{ player.name }}</td>
+                <td>{{ player.email }}</td>
+                <td>{{ 'Yes' if player.checked_in else 'No' }}</td>
+                <td>
+                    <button class="btn checkin-btn" data-id="{{ player.id }}">
+                        {{ 'Uncheck' if player.checked_in else 'Check In' }}
+                    </button>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <p style="margin-top: 1rem;">Checked in: {{ data.players|selectattr('checked_in')|list|length }} / 24</p>
+    {% else %}
+    <p>No players imported yet.</p>
+    {% endif %}
+</section>
+
+<!-- Team Management -->
+<section style="margin-bottom: 3rem;">
+    <h3 style="color: #00d4aa;">3. Create Teams</h3>
+    <button id="randomizeBtn" class="btn">Randomize Teams (24 players → 8 teams)</button>
+    <div id="randomizeMessage"></div>
+
+    {% if data.teams %}
+    <div style="margin-top: 2rem;">
+        <h4>Current Teams:</h4>
+        {% for team in data.teams %}
+        <div style="background: #1e1e2e; padding: 1rem; margin: 1rem 0; border-radius: 5px;">
+            <strong style="color: #00d4aa;">{{ team.name }}</strong>
+            <ul style="margin-top: 0.5rem; list-style: none;">
+                {% for member in team.members %}
+                <li>• {{ member.name }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+</section>
+
+<!-- Bracket Generation -->
+<section style="margin-bottom: 3rem;">
+    <h3 style="color: #00d4aa;">4. Generate Bracket</h3>
+    <button id="bracketBtn" class="btn">Generate Tournament Bracket</button>
+    <div id="bracketMessage"></div>
+</section>
+
+<!-- Match Management -->
+{% if data.matches %}
+<section style="margin-bottom: 3rem;">
+    <h3 style="color: #00d4aa;">5. Update Match Scores</h3>
+    {% for match in data.matches %}
+    <div style="background: #1e1e2e; padding: 1rem; margin: 1rem 0; border-radius: 5px;">
+        <div style="color: #00d4aa; margin-bottom: 0.5rem;">{{ match.round }} - Match {{ match.id }}</div>
+
+        {% set team1 = data.teams|selectattr('id', 'equalto', match.team1_id)|first %}
+        {% set team2 = data.teams|selectattr('id', 'equalto', match.team2_id)|first %}
+
+        <div style="display: flex; gap: 1rem; align-items: center;">
+            <span>{{ team1.name if team1 else 'TBD' }}</span>
+            <input type="number" class="score-input" data-match="{{ match.id }}" data-team="1"
+                   value="{{ match.team1_score }}" style="width: 80px;">
+            <span style="color: #00d4aa;">vs</span>
+            <input type="number" class="score-input" data-match="{{ match.id }}" data-team="2"
+                   value="{{ match.team2_score }}" style="width: 80px;">
+            <span>{{ team2.name if team2 else 'TBD' }}</span>
+            <button class="btn update-score" data-match="{{ match.id }}">Update</button>
+        </div>
+    </div>
+    {% endfor %}
+</section>
+{% endif %}
+
+<!-- Reset -->
+<section>
+    <h3 style="color: #ff6b6b;">Danger Zone</h3>
+    <button id="resetBtn" class="btn btn-danger">Reset Everything</button>
+</section>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+// Import CSV
+document.getElementById('importForm').onsubmit = async function(e) {
+    e.preventDefault();
+    const formData = new FormData(this);
+
+    try {
+        const response = await fetch('/admin/import', {
+            method: 'POST',
+            body: formData
+        });
+        const result = await response.json();
+        document.getElementById('importMessage').innerHTML =
+            `<div class="alert alert-success">${result.message || 'Import complete'}</div>`;
+        setTimeout(() => location.reload(), 1000);
+    } catch (error) {
+        document.getElementById('importMessage').innerHTML =
+            `<div class="alert alert-error">Error: ${error.message}</div>`;
+    }
+};
+
+// Check-in players
+document.querySelectorAll('.checkin-btn').forEach(btn => {
+    btn.onclick = async function() {
+        const playerId = this.dataset.id;
+        await fetch(`/admin/checkin/${playerId}`, { method: 'POST' });
+        location.reload();
+    };
+});
+
+// Randomize teams
+document.getElementById('randomizeBtn').onclick = async function() {
+    try {
+        const response = await fetch('/admin/randomize', { method: 'POST' });
+        const result = await response.json();
+
+        if (response.ok) {
+            document.getElementById('randomizeMessage').innerHTML =
+                `<div class="alert alert-success">${result.message}</div>`;
+            setTimeout(() => location.reload(), 1000);
+        } else {
+            document.getElementById('randomizeMessage').innerHTML =
+                `<div class="alert alert-error">${result.error}</div>`;
+        }
+    } catch (error) {
+        document.getElementById('randomizeMessage').innerHTML =
+            `<div class="alert alert-error">Error: ${error.message}</div>`;
+    }
+};
+
+// Generate bracket
+document.getElementById('bracketBtn').onclick = async function() {
+    try {
+        const response = await fetch('/admin/bracket', { method: 'POST' });
+        const result = await response.json();
+
+        if (response.ok) {
+            document.getElementById('bracketMessage').innerHTML =
+                `<div class="alert alert-success">${result.message}</div>`;
+            setTimeout(() => location.reload(), 1000);
+        } else {
+            document.getElementById('bracketMessage').innerHTML =
+                `<div class="alert alert-error">${result.error}</div>`;
+        }
+    } catch (error) {
+        document.getElementById('bracketMessage').innerHTML =
+            `<div class="alert alert-error">Error: ${error.message}</div>`;
+    }
+};
+
+// Update scores
+document.querySelectorAll('.update-score').forEach(btn => {
+    btn.onclick = async function() {
+        const matchId = this.dataset.match;
+        const team1Score = document.querySelector(`input[data-match="${matchId}"][data-team="1"]`).value;
+        const team2Score = document.querySelector(`input[data-match="${matchId}"][data-team="2"]`).value;
+
+        await fetch(`/admin/match/${matchId}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                match_id: parseInt(matchId),
+                team1_score: parseInt(team1Score) || 0,
+                team2_score: parseInt(team2Score) || 0
+            })
+        });
+        location.reload();
+    };
+});
+
+// Reset
+document.getElementById('resetBtn').onclick = async function() {
+    if (confirm('Are you sure? This will delete all players, teams, and matches!')) {
+        await fetch('/admin/reset', { method: 'POST' });
+        location.reload();
+    }
+};
+</script>
+{% endblock %}

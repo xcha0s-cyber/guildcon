@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CTF Tournament Countdown - Guild Con 2025</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .countdown-container {
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, #34495e 0%, #2c3e50 50%, #1a252f 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .countdown-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: repeating-linear-gradient(
+                90deg,
+                transparent,
+                transparent 100px,
+                rgba(255,255,255,0.02) 100px,
+                rgba(255,255,255,0.02) 200px
+            );
+            pointer-events: none;
+        }
+
+        .countdown-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .countdown-title {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #95a5a6;
+        }
+
+        .countdown-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 3rem;
+            color: #bdc3c7;
+        }
+
+        .countdown-timer {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .time-unit {
+            background: rgba(0,0,0,0.3);
+            border: 2px solid #7f8c8d;
+            border-radius: 10px;
+            padding: 1.5rem;
+            min-width: 120px;
+        }
+
+        .time-value {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #fff;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .time-label {
+            font-size: 1rem;
+            text-transform: uppercase;
+            color: #95a5a6;
+        }
+
+        .event-date {
+            font-size: 1.25rem;
+            color: #bdc3c7;
+            margin-bottom: 2rem;
+        }
+
+        .ctf-info {
+            background: rgba(0,0,0,0.3);
+            padding: 2rem;
+            border-radius: 10px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .ctf-info h3 {
+            color: #95a5a6;
+            margin-bottom: 1rem;
+        }
+
+        .ctf-info p {
+            color: #ecf0f1;
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .countdown-title {
+                font-size: 2rem;
+            }
+            .time-value {
+                font-size: 2rem;
+            }
+            .time-unit {
+                min-width: 80px;
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-container">
+                <a href="index.html" class="logo">
+                    <img src="img/logo.png" alt="Hackers Guild PGH">
+                    <span>Guild Con 2025</span>
+                </a>
+                <button class="burger-menu" id="burgerMenu" aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="cfp.html">CFP</a></li>
+                    <li><a href="talks.html">Talks</a></li>
+                    <li><a href="workshops.html">Workshops</a></li>
+                    <li><a href="ctf.html">CTF</a></li>
+                    <li><a href="sponsors.html">Sponsors</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="countdown-container">
+            <div class="countdown-content">
+                <h1 class="countdown-title">CTF Tournament Starts In</h1>
+                <p class="event-date">November 22, 2025 at 10:00 AM EST</p>
+
+                <div class="countdown-timer">
+                    <div class="time-unit">
+                        <span class="time-value" id="days">0</span>
+                        <span class="time-label">Days</span>
+                    </div>
+                    <div class="time-unit">
+                        <span class="time-value" id="hours">0</span>
+                        <span class="time-label">Hours</span>
+                    </div>
+                    <div class="time-unit">
+                        <span class="time-value" id="minutes">0</span>
+                        <span class="time-label">Minutes</span>
+                    </div>
+                    <div class="time-unit">
+                        <span class="time-value" id="seconds">0</span>
+                        <span class="time-label">Seconds</span>
+                    </div>
+                </div>
+
+                <div class="ctf-info">
+                    <h3>Tournament Format</h3>
+                    <p>24 Players • 8 Teams • Single Elimination</p>
+                    <p>The bracket will be available here once the tournament begins!</p>
+                    <a href="ctf.html" class="btn btn-secondary" style="margin-top: 1rem;">
+                        <i class="fas fa-arrow-left"></i> Back to CTF Info
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Hackers Guild Pittsburgh. All rights reserved. | <a href="code-of-conduct.html">Code of Conduct</a></p>
+            <div class="social-links">
+                <span>Follow us:</span>
+                <a href="https://x.com/hackersguildpgh" title="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://discord.gg/8NeSyVVbpy" title="Discord"><i class="fab fa-discord"></i></a>
+                <a href="https://www.facebook.com/hackersguildpgh" title="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.linkedin.com/company/hackersguildpgh" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://www.instagram.com/hackersguildpgh" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.youtube.com/@HackersGuildPGH" title="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Set the tournament date (November 22, 2025 at 10:00 AM EST)
+        const tournamentDate = new Date('2025-11-22T10:00:00-05:00').getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = tournamentDate - now;
+
+            if (distance < 0) {
+                // Tournament has started - redirect to bracket
+                window.location.href = 'https://ctf.guildcon.hackersguildpgh.com';
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = days;
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+        }
+
+        // Update countdown immediately and then every second
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>

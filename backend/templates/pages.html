@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Pages - Guild Con Admin{% endblock %}
+
+{% block content %}
+<div class="pages-manager">
+    <h1>Page Management</h1>
+
+    <div class="pages-list">
+        {% for page in pages %}
+        <div class="page-item">
+            <h3>{{ page.title }}</h3>
+            <p>Slug: {{ page.slug }}</p>
+            <div class="actions">
+                <a href="/admin/pages/edit/{{ page.slug }}" class="btn-edit">Edit</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

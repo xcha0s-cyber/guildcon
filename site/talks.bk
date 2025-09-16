@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Talks - Guild Con 2025</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-container">
+                <a href="index.html" class="logo">
+                    <img src="img/logo.png" alt="Hackers Guild PGH">
+                    <span>Guild Con 2025</span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="cfp.html">CFP</a></li>
+                    <li><a href="talks.html" class="active">Talks</a></li>
+                    <li><a href="workshops.html">Workshops</a></li>
+                    <li><a href="ctf.html">CTF</a></li>
+                    <li><a href="sponsors.html">Sponsors</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>Conference Talks</h1>
+                <p>Learn from security experts and researchers</p>
+            </div>
+        </section>
+
+        <section class="content">
+            <div class="container">
+                <div class="schedule-note">
+                    <p><strong>Schedule Coming Soon!</strong> We're currently reviewing CFP submissions. The full talk schedule will be posted by May 2025.</p>
+                    <p>Want to speak? <a href="cfp.html">Submit your talk proposal</a> before March 31, 2025.</p>
+                </div>
+
+                <!-- Example talks structure - update when speakers are confirmed -->
+                <div class="talks-schedule">
+                    <h2>Keynote</h2>
+                    <div class="talk-item">
+                        <div class="talk-time">9:00 AM - 10:00 AM</div>
+                        <div class="talk-details">
+                            <h3>Keynote Speaker</h3>
+                            <p class="speaker">To Be Announced</p>
+                            <p class="description">Our keynote speaker will be announced in February 2025.</p>
+                        </div>
+                    </div>
+
+                    <h2>Track 1 - Red Team</h2>
+                    <div class="talk-item">
+                        <div class="talk-time">10:15 AM - 11:00 AM</div>
+                        <div class="talk-details">
+                            <h3>Talk Title</h3>
+                            <p class="speaker">Speaker Name</p>
+                            <p class="description">Talk description will go here...</p>
+                        </div>
+                    </div>
+
+                    <h2>Track 2 - Blue Team</h2>
+                    <div class="talk-item">
+                        <div class="talk-time">10:15 AM - 11:00 AM</div>
+                        <div class="talk-details">
+                            <h3>Talk Title</h3>
+                            <p class="speaker">Speaker Name</p>
+                            <p class="description">Talk description will go here...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!--
+                When talks are confirmed, update this section with actual talks like:
+
+                <div class="talk-item">
+                    <div class="talk-time">10:15 AM - 11:00 AM</div>
+                    <div class="talk-details">
+                        <h3>Bypassing Modern EDR Solutions</h3>
+                        <p class="speaker">Jane Doe - Senior Red Team Operator at SecurityCorp</p>
+                        <p class="description">Learn advanced techniques for evading endpoint detection and response systems using process injection, API unhooking, and syscall manipulation.</p>
+                    </div>
+                </div>
+                -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Hackers Guild Pittsburgh. All rights reserved.</p>
+            <p>Follow us: <a href="https://twitter.com/hackersguildpgh">Twitter</a> | <a href="https://discord.gg/hackersguild">Discord</a></p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

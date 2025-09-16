@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}Edit {{ page.title }} - Guild Con Admin{% endblock %}
+
+{% block content %}
+<div class="page-editor">
+    <h1>Edit Page: {{ page.title }}</h1>
+
+    <form id="pageForm" method="POST" action="/admin/pages/save">
+        <input type="hidden" name="slug" value="{{ page.slug }}">
+
+        <div class="form-group">
+            <label for="title">Page Title</label>
+            <input type="text" id="title" name="title" value="{{ page.title }}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="content">Content</label>
+            <div id="editor" style="height: 400px;">{{ page.content | safe }}</div>
+            <input type="hidden" id="content" name="content">
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn-primary">Save Page</button>
+            <a href="/admin/pages" class="btn-secondary">Cancel</a>
+        </div>
+    </form>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const quill = new Quill('#editor', {
+        theme: 'snow',
+        modules: {
+            toolbar: [
+                ['bold', 'italic', 'underline', 'strike'],
+                ['blockquote', 'code-block'],
+                [{ 'header': 1 }, { 'header': 2 }],
+                [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                [{ 'script': 'sub'}, { 'script': 'super' }],
+                [{ 'indent': '-1'}, { 'indent': '+1' }],
+                [{ 'size': ['small', false, 'large', 'huge'] }],
+                [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+                [{ 'color': [] }, { 'background': [] }],
+                [{ 'align': [] }],
+                ['link', 'image', 'video'],
+                ['clean']
+            ]
+        }
+    });
+
+    document.getElementById('pageForm').onsubmit = function() {
+        document.getElementById('content').value = quill.root.innerHTML;
+    };
+});
+</script>
+{% endblock %}

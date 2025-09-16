@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - Guild Con Admin{% endblock %}
+
+{% block content %}
+<div class="dashboard">
+    <h1>Admin Dashboard</h1>
+
+    <div class="stats-grid">
+        <div class="stat-card">
+            <h3>CTF Players</h3>
+            <div class="stat-value">{{ stats.ctf_players }}</div>
+        </div>
+        <div class="stat-card">
+            <h3>Talks</h3>
+            <div class="stat-value">{{ stats.talks }}</div>
+        </div>
+        <div class="stat-card">
+            <h3>Workshops</h3>
+            <div class="stat-value">{{ stats.workshops }}</div>
+        </div>
+        <div class="stat-card">
+            <h3>Sponsors</h3>
+            <div class="stat-value">{{ stats.sponsors }}</div>
+        </div>
+    </div>
+
+    <div class="quick-actions">
+        <h2>Quick Actions</h2>
+        <div class="action-grid">
+            <a href="/admin/pages/edit/home" class="action-card">Edit Home Page</a>
+            <a href="/admin/announcements/new" class="action-card">New Announcement</a>
+            <a href="/admin/ctf" class="action-card">Manage CTF</a>
+            <a href="/admin/sponsors/new" class="action-card">Add Sponsor</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

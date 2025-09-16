@@ -1,4 +1,8 @@
-import { CtfAPI } from '@/lib/directus'
+// Temporary version that works without Directus
+export const dynamic = 'force-dynamic'
+
+// In-memory storage for testing (resets on server restart)
+let teams: any[] = []
 
 function isAdmin(req: Request) {
   const token = process.env.ADMIN_TOKEN || ''
@@ -6,14 +10,25 @@ function isAdmin(req: Request) {
 }
 
 export async function GET() {
-  const t = await CtfAPI.listTeams() as any
-  return Response.json(t?.data ?? [])
+  // Return existing teams or empty array
+  return Response.json(teams)
 }
 
 export async function PATCH(req: Request) {
   if (!isAdmin(req)) return new Response('Unauthorized', { status: 401 })
+
   const body = await req.json() as { id: number, name?: string }
-  await CtfAPI.patchTeam(body.id, { name: body.name })
+
+  // Find and update team name in memory
+  const team = teams.find(t => t.id === body.id)
+  if (team && body.name) {
+    team.name = body.name
+  }
+
   return Response.json({ ok: true })
 }
 
+// Helper function to set teams (called by randomize endpoint)
+export function setTeams(newTeams: any[]) {
+  teams = newTeams
+}
