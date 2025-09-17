@@ -1,0 +1,321 @@
+/* Accessibility Features CSS */
+/* Guild Con 2025 - WCAG 2.1 AA Compliance */
+
+/* Skip Navigation Link */
+.skip-nav {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: #000;
+    color: #FFFF00;
+    padding: 8px;
+    text-decoration: none;
+    z-index: 10000;
+    border: 2px solid #FFFF00;
+    border-radius: 0 0 4px 0;
+}
+
+.skip-nav:focus {
+    top: 0;
+}
+
+/* Screen Reader Only Content */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Focus Indicators */
+*:focus {
+    outline: 2px solid var(--cyan, #00e5ff);
+    outline-offset: 2px;
+}
+
+/* Accessibility Toggle Button */
+#a11y-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: rgba(20, 20, 20, 0.95);
+    border: 2px solid var(--cyan, #00e5ff);
+    color: var(--cyan, #00e5ff);
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 229, 255, 0.3);
+}
+
+#a11y-toggle:hover {
+    background: var(--cyan, #00e5ff);
+    color: #000;
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 229, 255, 0.5);
+}
+
+#a11y-toggle:focus {
+    outline: 3px solid #FFFF00;
+    outline-offset: 3px;
+}
+
+#a11y-toggle[aria-pressed="true"] {
+    background: #FFFF00;
+    border-color: #FFFF00;
+    color: #000;
+    box-shadow: 0 4px 15px rgba(255, 255, 0, 0.5);
+}
+
+#a11y-toggle span {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Accessibility Tooltip */
+.a11y-tooltip {
+    position: absolute;
+    bottom: 70px;
+    right: 0;
+    background: #000;
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 14px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+    border: 1px solid #FFFF00;
+}
+
+#a11y-toggle:hover .a11y-tooltip,
+#a11y-toggle:focus .a11y-tooltip {
+    opacity: 1;
+}
+
+/* High Contrast Mode */
+body.a11y-high-contrast {
+    background: #000 !important;
+    color: #fff !important;
+}
+
+body.a11y-high-contrast * {
+    background-color: transparent !important;
+    color: inherit !important;
+    text-shadow: none !important;
+}
+
+body.a11y-high-contrast header {
+    background: #000 !important;
+    border-bottom: 2px solid #fff !important;
+}
+
+body.a11y-high-contrast main {
+    background: #000 !important;
+}
+
+body.a11y-high-contrast section {
+    background: #000 !important;
+    border: 1px solid #fff !important;
+}
+
+body.a11y-high-contrast .card {
+    background: #000 !important;
+    border: 2px solid #fff !important;
+}
+
+body.a11y-high-contrast a {
+    color: #FFFF00 !important;
+    text-decoration: underline !important;
+}
+
+body.a11y-high-contrast a:hover,
+body.a11y-high-contrast a:focus {
+    background: #FFFF00 !important;
+    color: #000 !important;
+    text-decoration: none !important;
+}
+
+body.a11y-high-contrast button,
+body.a11y-high-contrast .btn {
+    background: #000 !important;
+    color: #fff !important;
+    border: 2px solid #fff !important;
+}
+
+body.a11y-high-contrast button:hover,
+body.a11y-high-contrast .btn:hover,
+body.a11y-high-contrast button:focus,
+body.a11y-high-contrast .btn:focus {
+    background: #fff !important;
+    color: #000 !important;
+}
+
+body.a11y-high-contrast *:focus {
+    outline: 3px solid #FFFF00 !important;
+    outline-offset: 2px !important;
+}
+
+body.a11y-high-contrast .hero-bg {
+    opacity: 0.3 !important;
+}
+
+body.a11y-high-contrast .accessibility-notice {
+    background: #000 !important;
+    border: 3px solid #FFFF00 !important;
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .hero-bg {
+        animation: none !important;
+    }
+
+    .scanline {
+        display: none !important;
+    }
+}
+
+body.a11y-reduce-motion *,
+body.a11y-reduce-motion *::before,
+body.a11y-reduce-motion *::after {
+    animation: none !important;
+    transition: none !important;
+}
+
+body.a11y-reduce-motion .hero-bg {
+    animation: none !important;
+}
+
+body.a11y-reduce-motion .scanline {
+    display: none !important;
+}
+
+/* Large Text Mode */
+body.a11y-large-text {
+    font-size: 125% !important;
+}
+
+body.a11y-large-text h1 {
+    font-size: 3rem !important;
+}
+
+body.a11y-large-text h2 {
+    font-size: 2.5rem !important;
+}
+
+body.a11y-large-text h3 {
+    font-size: 2rem !important;
+}
+
+body.a11y-large-text p,
+body.a11y-large-text li {
+    line-height: 1.8 !important;
+}
+
+/* Enhanced Focus Mode */
+body.a11y-focus *:focus {
+    outline: 4px solid #FFFF00 !important;
+    outline-offset: 4px !important;
+    box-shadow: 0 0 20px rgba(255, 255, 0, 0.5) !important;
+}
+
+/* Keyboard Navigation Indicators */
+.keyboard-nav *:focus {
+    outline: 3px solid #00e5ff !important;
+    outline-offset: 2px !important;
+}
+
+/* Link Underlines for Better Visibility */
+body.a11y-underline-links a {
+    text-decoration: underline !important;
+    text-decoration-thickness: 2px !important;
+    text-underline-offset: 3px !important;
+}
+
+/* Larger Click Targets */
+body.a11y-large-targets button,
+body.a11y-large-targets .btn,
+body.a11y-large-targets a {
+    min-height: 44px !important;
+    min-width: 44px !important;
+    padding: 12px 20px !important;
+}
+
+/* Print Styles */
+@media print {
+    .skip-nav,
+    #a11y-toggle,
+    .a11y-tooltip {
+        display: none !important;
+    }
+
+    body {
+        background: white !important;
+        color: black !important;
+    }
+
+    a {
+        color: black !important;
+        text-decoration: underline !important;
+    }
+}
+
+/* Mobile Accessibility Adjustments */
+@media (max-width: 768px) {
+    #a11y-toggle {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+    }
+
+    .a11y-tooltip {
+        display: none;
+    }
+}
+
+/* Announcement Region for Screen Readers */
+#a11y-announcements {
+    position: absolute;
+    left: -10000px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+[aria-live="polite"],
+[aria-live="assertive"] {
+    position: absolute;
+    left: -10000px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}

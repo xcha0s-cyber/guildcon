@@ -5,11 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Call for Papers - Guild Con 2025</title>
     <link rel="stylesheet" href="css/modern-style.css">
+    <link rel="stylesheet" href="css/accessibility.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
+    <a href="#main" class="skip-nav">Skip to main content</a>
     <header>
-        <nav>
+        <nav role="navigation" aria-label="Main navigation">
             <div class="nav-container">
                 <a href="index.html" class="logo">
                     <img src="img/logo.png" alt="Hackers Guild PGH">
@@ -32,80 +35,109 @@
         </nav>
     </header>
 
-    <main>
+    <main id="main" role="main">
         <section class="page-header">
             <div class="container">
-                <h1>Call for Papers</h1>
+                <h1 style="font-family: 'Orbitron', monospace; text-transform: uppercase; letter-spacing: 3px;">Call for Papers</h1>
                 <p>Share your knowledge at Guild Con 2025</p>
             </div>
         </section>
 
         <section class="content">
             <div class="container">
-                <div class="cfp-info">
-                    <h2>We Want to Hear From You!</h2>
-                    <p>Guild Con 2025 is seeking speakers to share their expertise with the Pittsburgh security community. Whether you're a seasoned professional or a first-time speaker, we encourage you to submit your ideas.</p>
+                <div class="cfp-info" style="max-width: 900px; margin: 0 auto;">
+                    <div style="text-align: center; padding: 2rem; background: linear-gradient(135deg, rgba(0, 229, 255, 0.1), rgba(0, 229, 255, 0.05)); border-radius: 15px; margin-bottom: 3rem; border: 1px solid rgba(0, 229, 255, 0.3);">
+                        <h2 style="color: var(--cyan); font-size: 2rem; margin-bottom: 1rem;">We Want to Hear From You!</h2>
+                        <p style="font-size: 1.2rem; line-height: 1.8; max-width: 700px; margin: 0 auto;">Guild Con 2025 is seeking speakers to share their expertise with the Pittsburgh security community. Whether you're a seasoned professional or a first-time speaker, we encourage you to submit your ideas.</p>
+                    </div>
 
-                    <h3>Topics We're Looking For:</h3>
-                    <ul>
-                        <li>Offensive Security & Red Team Operations</li>
-                        <li>Defensive Strategies & Blue Team Tactics</li>
-                        <li>Vulnerability Research & Exploitation</li>
-                        <li>Reverse Engineering & Malware Analysis</li>
-                        <li>Cloud Security & Infrastructure</li>
-                        <li>IoT & Hardware Hacking</li>
-                        <li>Social Engineering & Physical Security</li>
-                        <li>Security Tools & Automation</li>
-                        <li>Incident Response & Forensics</li>
-                        <li>Privacy & Cryptography</li>
-                    </ul>
+                    <h3 style="color: var(--cyan); margin-bottom: 1.5rem; font-size: 1.5rem;"><i class="fas fa-bullseye"></i> Topics We're Looking For</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; margin-bottom: 3rem;">
+                        <div style="background: rgba(0, 229, 255, 0.05); padding: 1rem; border-left: 3px solid var(--cyan); transition: all 0.3s;">Offensive Security & Red Team Operations</div>
+                        <div style="background: rgba(0, 229, 255, 0.05); padding: 1rem; border-left: 3px solid var(--cyan); transition: all 0.3s;">Defensive Strategies & Blue Team Tactics</div>
+                        <div style="background: rgba(0, 229, 255, 0.05); padding: 1rem; border-left: 3px solid var(--cyan); transition: all 0.3s;">Vulnerability Research & Exploitation</div>
+                        <div style="background: rgba(0, 229, 255, 0.05); padding: 1rem; border-left: 3px solid var(--cyan); transition: all 0.3s;">Reverse Engineering & Malware Analysis</div>
+                        <div style="background: rgba(0, 229, 255, 0.05); padding: 1rem; border-left: 3px solid var(--cyan); transition: all 0.3s;">Cloud Security & Infrastructure</div>
+                        <div style="background: rgba(0, 229, 255, 0.05); padding: 1rem; border-left: 3px solid var(--cyan); transition: all 0.3s;">IoT & Hardware Hacking</div>
+                        <div style="background: rgba(0, 229, 255, 0.05); padding: 1rem; border-left: 3px solid var(--cyan); transition: all 0.3s;">Social Engineering & Physical Security</div>
+                        <div style="background: rgba(0, 229, 255, 0.05); padding: 1rem; border-left: 3px solid var(--cyan); transition: all 0.3s;">Security Tools & Automation</div>
+                        <div style="background: rgba(0, 229, 255, 0.05); padding: 1rem; border-left: 3px solid var(--cyan); transition: all 0.3s;">Incident Response & Forensics</div>
+                        <div style="background: rgba(0, 229, 255, 0.05); padding: 1rem; border-left: 3px solid var(--cyan); transition: all 0.3s;">Privacy & Cryptography</div>
+                    </div>
 
-                    <h3>Speaker Guidelines:</h3>
-                    <ul>
-                        <li><strong>New Speakers Welcome!</strong> Never spoken before? We'll help you prepare</li>
-                        <li><strong>Diverse Voices:</strong> We especially encourage underrepresented groups</li>
-                        <li><strong>Original Content Preferred:</strong> Fresh content for our community is ideal</li>
-                        <li><strong>Direct Submissions Only:</strong> No PR firms - this is about community</li>
-                        <li><strong>No Sales Pitches:</strong> Keep it technical and educational</li>
-                        <li><strong>Make It Accessible:</strong> Dive deep but explain your jargon</li>
-                    </ul>
+                    <h3 style="color: var(--neon-pink); margin-bottom: 1.5rem; font-size: 1.5rem;"><i class="fas fa-user-check"></i> Speaker Guidelines</h3>
+                    <div style="background: rgba(30, 30, 30, 0.5); border-radius: 10px; padding: 2rem; margin-bottom: 3rem; border: 1px solid rgba(255, 255, 255, 0.1);">
+                        <ul style="list-style: none; padding: 0; line-height: 2;">
+                            <li style="margin-bottom: 0.5rem;"><i class="fas fa-star" style="color: var(--neon-pink); margin-right: 0.5rem;"></i><strong>New Speakers Welcome!</strong> Never spoken before? We'll help you prepare</li>
+                            <li style="margin-bottom: 0.5rem;"><i class="fas fa-users" style="color: var(--neon-pink); margin-right: 0.5rem;"></i><strong>Diverse Voices:</strong> We especially encourage underrepresented groups</li>
+                            <li style="margin-bottom: 0.5rem;"><i class="fas fa-lightbulb" style="color: var(--neon-pink); margin-right: 0.5rem;"></i><strong>Original Content Preferred:</strong> Fresh content for our community is ideal</li>
+                            <li style="margin-bottom: 0.5rem;"><i class="fas fa-hand-paper" style="color: var(--neon-pink); margin-right: 0.5rem;"></i><strong>Direct Submissions Only:</strong> No PR firms - this is about community</li>
+                            <li style="margin-bottom: 0.5rem;"><i class="fas fa-ban" style="color: var(--neon-pink); margin-right: 0.5rem;"></i><strong>No Sales Pitches:</strong> Keep it technical and educational</li>
+                            <li><i class="fas fa-universal-access" style="color: var(--neon-pink); margin-right: 0.5rem;"></i><strong>Make It Accessible:</strong> Dive deep but explain your jargon</li>
+                        </ul>
+                    </div>
 
-                    <h3>Talk Formats:</h3>
-                    <ul>
-                        <li><strong>Standard Talk:</strong> 45 minutes (including Q&A)</li>
-                        <li><strong>Lightning Talk:</strong> 15 minutes</li>
-                    </ul>
+                    <h3 style="color: var(--cyan); margin-bottom: 1.5rem; font-size: 1.5rem;"><i class="fas fa-clock"></i> Talk Formats</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 3rem;">
+                        <div style="background: rgba(0, 229, 255, 0.1); border: 2px solid var(--cyan); border-radius: 10px; padding: 2rem; text-align: center;">
+                            <i class="fas fa-microphone" style="font-size: 2rem; color: var(--cyan); display: block; margin-bottom: 1rem;"></i>
+                            <h4 style="color: var(--cyan); margin-bottom: 0.5rem;">Standard Talk</h4>
+                            <p style="font-size: 1.2rem; margin: 0;"><strong>45 minutes</strong></p>
+                            <p style="color: #a8a8a8; margin-top: 0.5rem;">(including Q&A)</p>
+                        </div>
+                        <div style="background: rgba(30, 30, 30, 0.5); border: 2px solid var(--neon-pink); border-radius: 10px; padding: 2rem; text-align: center;">
+                            <i class="fas fa-bolt" style="font-size: 2rem; color: var(--neon-pink); display: block; margin-bottom: 1rem;"></i>
+                            <h4 style="color: var(--neon-pink); margin-bottom: 0.5rem;">Lightning Talk</h4>
+                            <p style="font-size: 1.2rem; margin: 0;"><strong>15 minutes</strong></p>
+                            <p style="color: #a8a8a8; margin-top: 0.5rem;">(rapid-fire format)</p>
+                        </div>
+                    </div>
 
-                    <h3>Important Dates:</h3>
-                    <ul>
-                        <li>CFP Opens: September 15, 2025</li>
-                        <li>CFP Closes: October 31, 2025</li>
-                        <li>Speaker Notifications: November 7, 2025</li>
-                        <li>Conference Date: November 22, 2025</li>
-                    </ul>
+                    <h3 style="color: var(--cyan); margin-bottom: 1.5rem; font-size: 1.5rem;"><i class="fas fa-calendar-alt"></i> Important Dates</h3>
+                    <div style="background: linear-gradient(135deg, rgba(30, 30, 30, 0.8), rgba(30, 30, 30, 0.4)); border-radius: 10px; padding: 2rem; margin-bottom: 3rem; border: 1px solid rgba(0, 229, 255, 0.3);">
+                        <table style="width: 100%; line-height: 2.5;">
+                            <tr>
+                                <td style="color: var(--cyan); font-weight: bold; width: 40%;"><i class="fas fa-door-open" style="margin-right: 0.5rem;"></i>CFP Opens</td>
+                                <td>September 15, 2025</td>
+                            </tr>
+                            <tr>
+                                <td style="color: var(--neon-pink); font-weight: bold;"><i class="fas fa-door-closed" style="margin-right: 0.5rem;"></i>CFP Closes</td>
+                                <td>October 31, 2025</td>
+                            </tr>
+                            <tr>
+                                <td style="color: var(--cyan); font-weight: bold;"><i class="fas fa-envelope" style="margin-right: 0.5rem;"></i>Speaker Notifications</td>
+                                <td>November 7, 2025</td>
+                            </tr>
+                            <tr>
+                                <td style="color: var(--neon-pink); font-weight: bold;"><i class="fas fa-flag-checkered" style="margin-right: 0.5rem;"></i>Conference Date</td>
+                                <td><strong>November 22, 2025</strong></td>
+                            </tr>
+                        </table>
+                    </div>
 
-                    <div class="submit-section">
-                        <h2>Ready to Submit?</h2>
-                        <p>Click the button below to submit your talk proposal via our Google Form.</p>
+                    <div class="submit-section" style="text-align: center; background: linear-gradient(135deg, rgba(0, 229, 255, 0.1), rgba(0, 229, 255, 0.05)); border-radius: 15px; padding: 3rem 2rem; margin-bottom: 3rem; border: 2px solid var(--cyan);">
+                        <h2 style="color: var(--cyan); font-size: 2rem; margin-bottom: 1rem;">Ready to Submit?</h2>
+                        <p style="font-size: 1.2rem; margin-bottom: 2rem;">Click the button below to submit your talk proposal via our Google Form.</p>
                         <a href="https://docs.google.com/forms/d/e/1FAIpQLSenKGY_G-DcdLhAeWQ9fgoxUzwg78btyidHhxnrH0jjM6AGQg/viewform"
                            target="_blank"
-                           class="btn btn-primary btn-large">
-                            Submit Your Talk Proposal
+                           class="btn btn-primary btn-large"
+                           style="font-size: 1.3rem; padding: 1rem 2.5rem; display: inline-block; box-shadow: 0 0 20px rgba(0, 229, 255, 0.3);">
+                            <i class="fas fa-paper-plane" style="margin-right: 0.5rem;"></i> Submit Your Talk Proposal
                         </a>
                     </div>
 
-                    <div class="questions">
-                        <h3>Questions?</h3>
-                        <p>If you have any questions about the CFP process or need assistance with your submission, please reach out to us at <a href="mailto:info@hackersguildpgh.com">info@hackersguildpgh.com</a></p>
+                    <div class="questions" style="text-align: center; padding: 2rem; background: rgba(30, 30, 30, 0.5); border-radius: 10px; border: 1px solid var(--neon-pink);">
+                        <h3 style="color: var(--neon-pink); margin-bottom: 1rem;"><i class="fas fa-question-circle"></i> Questions?</h3>
+                        <p style="font-size: 1.1rem;">If you have any questions about the CFP process or need assistance with your submission, please reach out to us at <a href="mailto:info@hackersguildpgh.com" style="color: var(--neon-pink); text-decoration: underline;">info@hackersguildpgh.com</a></p>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer>
+    <footer role="contentinfo">
         <div class="container">
-            <p>&copy; 2025 Hackers Guild Pittsburgh. All rights reserved. | <a href="code-of-conduct.html">Code of Conduct</a></p>
+            <p>&copy; 2025 Hackers Guild Pittsburgh. All rights reserved. | <a href="code-of-conduct.html">Code of Conduct</a> | <a href="accessibility.html">Accessibility</a> | <a href="terms.html">Terms</a> | <a href="privacy.html">Privacy</a> | <a href="photo-policy.html">Photo Policy</a></p>
             <div class="social-links">
                 <span>Follow us:</span>
                 <a href="https://x.com/hackersguildpgh" title="Twitter"><i class="fab fa-twitter"></i></a>
@@ -118,6 +150,13 @@
         </div>
     </footer>
 
+    <!-- Accessibility Toggle -->
+    <button id="a11y-toggle" aria-label="Toggle accessibility mode" aria-pressed="false">
+        <i class="fas fa-wheelchair"></i>
+        <span>Accessibility</span>
+        <div class="a11y-tooltip">Toggle Accessibility Mode</div>
+    </button>
+    <div id="a11y-announcements" aria-live="polite" aria-atomic="true"></div>
     <script src="js/modern.js"></script>
 </body>
 </html>

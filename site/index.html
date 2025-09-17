@@ -5,11 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guild Con 2025 - Hackers Guild Pittsburgh</title>
     <link rel="stylesheet" href="css/modern-style.css">
+    <link rel="stylesheet" href="css/accessibility.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
+    <a href="#main" class="skip-nav">Skip to main content</a>
     <header>
-        <nav>
+        <nav role="navigation" aria-label="Main navigation">
             <div class="nav-container">
                 <a href="index.html" class="logo">
                     <img src="img/logo.png" alt="Hackers Guild PGH">
@@ -32,13 +35,13 @@
         </nav>
     </header>
 
-    <main>
+    <main id="main" role="main">
         <section class="hero">
             <div class="hero-bg">
                 <img src="img/banner.png" alt="Guild Con 2025">
             </div>
             <div class="hero-content">
-                <h1>Guild Con 2025</h1>
+                <h1 style="font-family: 'Orbitron', monospace; text-transform: uppercase; letter-spacing: 3px;">Guild Con 2025</h1>
                 <p class="tagline">Celebrating Hackers Guild Pittsburgh's 1st Birthday!</p>
                 <p class="date">November 22, 2025 | Pittsburgh, PA</p>
                 <div class="cta-buttons">
@@ -52,6 +55,16 @@
             <div class="container">
                 <h2>About Guild Con</h2>
                 <p>Join us for a day of hacking, learning, and community as we celebrate the first anniversary of Hackers Guild Pittsburgh. Guild Con brings together security professionals, hackers, and enthusiasts for talks, workshops, and our signature Capture The Flag competition.</p>
+                <div style="margin-top: 2rem; padding: 1.5rem; background: rgba(0, 229, 255, 0.1); border: 1px solid rgba(0, 229, 255, 0.3); border-radius: 8px; text-align: center;">
+                    <h3 style="color: var(--cyan); margin-bottom: 1rem;">
+                        <i class="fas fa-users"></i> Family-Friendly Event
+                    </h3>
+                    <ul style="margin: 0; list-style: none; padding: 0;">
+                        <li style="margin-bottom: 0.5rem;">Kids under 16 welcome when accompanied by a guardian</li>
+                        <li style="margin-bottom: 0.5rem;">21+ wristbands available for complimentary beverages (ID required)</li>
+                        <li>Safe and inclusive environment for all ages</li>
+                    </ul>
+                </div>
             </div>
         </section>
 
@@ -131,14 +144,33 @@
                 <h2>Venue</h2>
                 <p><strong>Hackers Guild Pittsburgh</strong></p>
                 <p><a href="https://maps.google.com/?q=2247+Babcock+Blvd,+Pittsburgh,+PA+15237" target="_blank" style="color: inherit; text-decoration: underline;">2247 Babcock Blvd, Pittsburgh, PA 15237</a></p>
+
+                <div class="accessibility-notice" style="background: rgba(255, 170, 0, 0.1); border: 2px solid rgba(255, 170, 0, 0.5); border-radius: 8px; padding: 1.5rem; margin: 2rem auto; max-width: 600px;">
+                    <h3 style="color: #ffa500; margin-bottom: 1rem; font-size: 1.2rem;">
+                        <i class="fas fa-wheelchair"></i> Venue Accessibility Notice
+                    </h3>
+                    <p style="margin-bottom: 1rem;">
+                        <strong>Important:</strong> Our venue is a two-floor facility. Unfortunately, the second floor where <strong>all talks are held</strong> is currently not wheelchair accessible as there is no elevator available.
+                    </p>
+                    <p style="margin-bottom: 1rem;">
+                        <strong>Limited streaming:</strong> Some talks *may* be streamed locally on our network to the ground floor, depending on individual speaker permissions. However, we cannot guarantee which talks will be available, and no recordings will be made.
+                    </p>
+                    <p style="margin-bottom: 1rem;">
+                        <strong>We sincerely apologize for these limitations.</strong> We understand this severely restricts access to the conference content for wheelchair users and those with mobility challenges. The CTF tournament, networking, and social activities on the ground floor remain fully accessible.
+                    </p>
+                    <p>
+                        If you have any specific accessibility needs or questions, please <a href="mailto:info@hackersguildpgh.com" style="color: #ffa500; text-decoration: underline;">contact us</a> and we'll do our best to accommodate you.
+                    </p>
+                </div>
+
                 <p><a href="https://maps.google.com/?q=2247+Babcock+Blvd,+Pittsburgh,+PA+15237" target="_blank" class="btn btn-secondary" style="margin-top: 1rem;"><i class="fas fa-map-marker-alt"></i> Get Directions</a></p>
             </div>
         </section>
     </main>
 
-    <footer>
+    <footer role="contentinfo">
         <div class="container">
-            <p>&copy; 2025 Hackers Guild Pittsburgh. All rights reserved. | <a href="code-of-conduct.html">Code of Conduct</a></p>
+            <p>&copy; 2025 Hackers Guild Pittsburgh. All rights reserved. | <a href="code-of-conduct.html">Code of Conduct</a> | <a href="accessibility.html">Accessibility</a> | <a href="terms.html">Terms</a> | <a href="privacy.html">Privacy</a> | <a href="photo-policy.html">Photo Policy</a></p>
             <div class="social-links">
                 <span>Follow us:</span>
                 <a href="https://x.com/hackersguildpgh" title="Twitter"><i class="fab fa-twitter"></i></a>
@@ -151,6 +183,13 @@
         </div>
     </footer>
 
+    <!-- Accessibility Toggle -->
+    <button id="a11y-toggle" aria-label="Toggle accessibility mode" aria-pressed="false">
+        <i class="fas fa-wheelchair"></i>
+        <span>Accessibility</span>
+        <div class="a11y-tooltip">Toggle Accessibility Mode</div>
+    </button>
+    <div id="a11y-announcements" aria-live="polite" aria-atomic="true"></div>
     <script src="js/modern.js"></script>
 </body>
 </html>

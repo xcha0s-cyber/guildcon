@@ -5,11 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Code of Conduct - Guild Con 2025</title>
     <link rel="stylesheet" href="css/modern-style.css">
+    <link rel="stylesheet" href="css/accessibility.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
+    <a href="#main" class="skip-nav">Skip to main content</a>
     <header>
-        <nav>
+        <nav role="navigation" aria-label="Main navigation">
             <div class="nav-container">
                 <a href="index.html" class="logo">
                     <img src="img/logo.png" alt="Hackers Guild PGH">
@@ -32,10 +35,10 @@
         </nav>
     </header>
 
-    <main>
+    <main id="main" role="main">
         <section class="page-header">
             <div class="container">
-                <h1>Code of Conduct</h1>
+                <h1 style="font-family: 'Orbitron', monospace; text-transform: uppercase; letter-spacing: 3px;">Code of Conduct</h1>
                 <p>Guild Con 2025 & Hackers Guild Pittsburgh Community Guidelines</p>
             </div>
         </section>
@@ -157,9 +160,9 @@
         </section>
     </main>
 
-    <footer>
+    <footer role="contentinfo">
         <div class="container">
-            <p>&copy; 2025 Hackers Guild Pittsburgh. All rights reserved.</p>
+            <p>&copy; 2025 Hackers Guild Pittsburgh. All rights reserved. | <a href="code-of-conduct.html">Code of Conduct</a> | <a href="accessibility.html">Accessibility</a> | <a href="terms.html">Terms</a> | <a href="privacy.html">Privacy</a> | <a href="photo-policy.html">Photo Policy</a></p>
             <div class="social-links">
                 <span>Follow us:</span>
                 <a href="https://x.com/hackersguildpgh" title="Twitter"><i class="fab fa-twitter"></i></a>
@@ -172,6 +175,13 @@
         </div>
     </footer>
 
+    <!-- Accessibility Toggle -->
+    <button id="a11y-toggle" aria-label="Toggle accessibility mode" aria-pressed="false">
+        <i class="fas fa-wheelchair"></i>
+        <span>Accessibility</span>
+        <div class="a11y-tooltip">Toggle Accessibility Mode</div>
+    </button>
+    <div id="a11y-announcements" aria-live="polite" aria-atomic="true"></div>
     <script src="js/modern.js"></script>
 </body>
 </html>

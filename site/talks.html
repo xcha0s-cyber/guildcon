@@ -5,11 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Talks - Guild Con 2025</title>
     <link rel="stylesheet" href="css/modern-style.css">
+    <link rel="stylesheet" href="css/accessibility.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
+    <a href="#main" class="skip-nav">Skip to main content</a>
     <header>
-        <nav>
+        <nav role="navigation" aria-label="Main navigation">
             <div class="nav-container">
                 <a href="index.html" class="logo">
                     <img src="img/logo.png" alt="Hackers Guild PGH">
@@ -32,16 +35,32 @@
         </nav>
     </header>
 
-    <main>
+    <main id="main" role="main">
         <section class="page-header">
             <div class="container">
-                <h1>Conference Talks</h1>
+                <h1 style="font-family: 'Orbitron', monospace; text-transform: uppercase; letter-spacing: 3px;">Conference Talks</h1>
                 <p>Learn from security experts and researchers</p>
             </div>
         </section>
 
         <section class="content">
             <div class="container">
+                <div class="accessibility-notice" style="background: rgba(255, 170, 0, 0.1); border: 2px solid rgba(255, 170, 0, 0.5); border-radius: 8px; padding: 1.5rem; margin: 0 auto 2rem; max-width: 700px;">
+                    <h3 style="color: #ffa500; margin-bottom: 1rem; text-align: center;">
+                        <i class="fas fa-wheelchair"></i> Important Accessibility Notice
+                    </h3>
+                    <p style="text-align: center; margin-bottom: 1rem;">
+                        <strong>All talks are held on the second floor, which is not wheelchair accessible.</strong>
+                    </p>
+                    <p style="text-align: center; margin-bottom: 1rem;">
+                        <em>*Some talks may be streamed locally to the ground floor, depending on speaker permissions. No recordings will be available.</em>
+                    </p>
+                    <p style="text-align: center;">
+                        We sincerely apologize for these limitations.
+                        <a href="accessibility.html" style="color: #ffa500; text-decoration: underline; display: block; margin-top: 0.5rem;">View full accessibility information</a>
+                    </p>
+                </div>
+
                 <div class="schedule-note">
                     <h2 style="text-align: center; margin-bottom: 1rem;">All talks will be listed here after CFP submission closes</h2>
                     <p style="text-align: center;">Check back after October 31, 2025 for the complete schedule</p>
@@ -63,9 +82,9 @@
         </section>
     </main>
 
-    <footer>
+    <footer role="contentinfo">
         <div class="container">
-            <p>&copy; 2025 Hackers Guild Pittsburgh. All rights reserved. | <a href="code-of-conduct.html">Code of Conduct</a></p>
+            <p>&copy; 2025 Hackers Guild Pittsburgh. All rights reserved. | <a href="code-of-conduct.html">Code of Conduct</a> | <a href="accessibility.html">Accessibility</a> | <a href="terms.html">Terms</a> | <a href="privacy.html">Privacy</a> | <a href="photo-policy.html">Photo Policy</a></p>
             <div class="social-links">
                 <span>Follow us:</span>
                 <a href="https://x.com/hackersguildpgh" title="Twitter"><i class="fab fa-twitter"></i></a>
@@ -78,6 +97,13 @@
         </div>
     </footer>
 
+    <!-- Accessibility Toggle -->
+    <button id="a11y-toggle" aria-label="Toggle accessibility mode" aria-pressed="false">
+        <i class="fas fa-wheelchair"></i>
+        <span>Accessibility</span>
+        <div class="a11y-tooltip">Toggle Accessibility Mode</div>
+    </button>
+    <div id="a11y-announcements" aria-live="polite" aria-atomic="true"></div>
     <script src="js/modern.js"></script>
 </body>
 </html>

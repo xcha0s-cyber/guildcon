@@ -5,11 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sponsors - Guild Con 2025</title>
     <link rel="stylesheet" href="css/modern-style.css">
+    <link rel="stylesheet" href="css/accessibility.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
+    <a href="#main" class="skip-nav">Skip to main content</a>
     <header>
-        <nav>
+        <nav role="navigation" aria-label="Main navigation">
             <div class="nav-container">
                 <a href="index.html" class="logo">
                     <img src="img/logo.png" alt="Hackers Guild PGH">
@@ -32,99 +35,106 @@
         </nav>
     </header>
 
-    <main>
+    <main id="main" role="main">
         <section class="page-header">
             <div class="container">
-                <h1>Our Sponsors</h1>
+                <h1 style="font-family: 'Orbitron', monospace; text-transform: uppercase; letter-spacing: 3px;">Our Sponsors</h1>
                 <p>Thank you to our amazing sponsors who make Guild Con possible</p>
             </div>
         </section>
 
-        <section class="sponsors-section">
+        <section class="sponsors-section" style="padding: 3rem 0;">
             <div class="container">
                 <!-- Elite Sponsors -->
-                <div class="sponsor-tier tier3">
-                    <h2>Elite Sponsors - $1,000</h2>
-                    <div class="sponsor-grid large">
+                <div class="sponsor-tier tier3" style="margin-bottom: 3rem;">
+                    <h2 style="color: var(--cyan); text-align: center; font-size: 2rem; margin-bottom: 2rem; text-transform: uppercase; letter-spacing: 2px;">
+                        Elite Sponsors - $1,000
+                    </h2>
+                    <div class="sponsor-grid large" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 2rem;">
                         <!-- Add tier 3 sponsors here when confirmed -->
-                        <div class="sponsor-placeholder">
-                            <p>Become an Elite Sponsor</p>
-                            <a href="mailto:info@hackersguildpgh.com">Contact Us</a>
+                        <div class="sponsor-placeholder" style="background: linear-gradient(135deg, rgba(0, 229, 255, 0.1), rgba(0, 229, 255, 0.05)); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 2px solid var(--cyan); border-radius: 10px; padding: 3rem 2rem; text-align: center; transition: all 0.3s; box-shadow: 0 8px 32px 0 rgba(0, 229, 255, 0.1);">
+                            <p style="font-size: 1.2rem; margin-bottom: 1rem; color: var(--text-light);">Become an Elite Sponsor</p>
+                            <a href="mailto:info@hackersguildpgh.com" class="btn btn-primary" style="display: inline-block;">Contact Us</a>
                         </div>
                     </div>
                 </div>
 
                 <!-- Champion Sponsors -->
-                <div class="sponsor-tier tier2">
-                    <h2>Champion Sponsors - $500</h2>
-                    <div class="sponsor-grid medium">
+                <div class="sponsor-tier tier2" style="margin-bottom: 3rem;">
+                    <h2 style="color: var(--cyan); text-align: center; font-size: 1.8rem; margin-bottom: 2rem; text-transform: uppercase; letter-spacing: 2px;">
+                        Champion Sponsors - $500
+                    </h2>
+                    <div class="sponsor-grid medium" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 2rem;">
                         <!-- Add tier 2 sponsors here when confirmed -->
-                        <div class="sponsor-placeholder">
-                            <p>Become a Champion Sponsor</p>
-                            <a href="mailto:info@hackersguildpgh.com">Contact Us</a>
+                        <div class="sponsor-placeholder" style="background: linear-gradient(135deg, rgba(0, 229, 255, 0.1), rgba(0, 229, 255, 0.05)); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 2px solid var(--cyan); border-radius: 10px; padding: 2.5rem 1.5rem; text-align: center; transition: all 0.3s; box-shadow: 0 8px 32px 0 rgba(0, 229, 255, 0.1);">
+                            <p style="font-size: 1.1rem; margin-bottom: 1rem; color: var(--text-light);">Become a Champion Sponsor</p>
+                            <a href="mailto:info@hackersguildpgh.com" class="btn btn-secondary" style="display: inline-block;">Contact Us</a>
                         </div>
                     </div>
                 </div>
 
                 <!-- Supporter Sponsors -->
-                <div class="sponsor-tier tier1">
-                    <h2>Supporter Sponsors - $150</h2>
-                    <div class="sponsor-grid small">
+                <div class="sponsor-tier tier1" style="margin-bottom: 3rem;">
+                    <h2 style="color: var(--cyan); text-align: center; font-size: 1.6rem; margin-bottom: 2rem; text-transform: uppercase; letter-spacing: 2px;">
+                        Supporter Sponsors - $150
+                    </h2>
+                    <div class="sponsor-grid small" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
                         <!-- Add tier 1 sponsors here when confirmed -->
-                        <div class="sponsor-placeholder">
-                            <p>Become a Supporter</p>
-                            <a href="mailto:info@hackersguildpgh.com">Contact Us</a>
+                        <div class="sponsor-placeholder" style="background: linear-gradient(135deg, rgba(0, 229, 255, 0.1), rgba(0, 229, 255, 0.05)); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 2px solid var(--cyan); border-radius: 10px; padding: 2rem 1rem; text-align: center; transition: all 0.3s; box-shadow: 0 8px 32px 0 rgba(0, 229, 255, 0.1);">
+                            <p style="margin-bottom: 1rem; color: var(--text-light);">Become a Supporter</p>
+                            <a href="mailto:info@hackersguildpgh.com" class="btn btn-secondary" style="display: inline-block; padding: 0.5rem 1rem; font-size: 0.9rem;">Contact Us</a>
                         </div>
                     </div>
                 </div>
 
                 <!-- Sponsorship Info -->
-                <div class="sponsorship-info">
-                    <h2>Become a Sponsor</h2>
-                    <p>Support the Pittsburgh security community and get your brand in front of hundreds of security professionals.</p>
+                <div class="sponsorship-info" style="background: linear-gradient(135deg, rgba(0, 229, 255, 0.05), rgba(0, 229, 255, 0.02)); border-radius: 15px; padding: 3rem 2rem; margin-top: 4rem; border: 1px solid rgba(0, 229, 255, 0.2);">
+                    <h2 style="text-align: center; color: var(--cyan); margin-bottom: 1rem; font-size: 2rem;">Become a Sponsor</h2>
+                    <p style="text-align: center; font-size: 1.2rem; margin-bottom: 3rem; max-width: 700px; margin-left: auto; margin-right: auto;">Support the Pittsburgh security community and get your brand in front of hundreds of security professionals.</p>
 
-                    <div class="sponsor-packages">
-                        <div class="package">
-                            <h3>Supporter - $150</h3>
-                            <ul>
-                                <li>Logo on website</li>
-                                <li>1 conference ticket</li>
+                    <div class="sponsor-packages" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-bottom: 3rem;">
+                        <div class="package" style="background: rgba(0, 229, 255, 0.1); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 2px solid var(--cyan); border-radius: 10px; padding: 2rem; text-align: center; transition: all 0.3s; position: relative; box-shadow: 0 8px 32px 0 rgba(0, 229, 255, 0.1);">
+                            <h3 style="color: var(--cyan); margin-bottom: 1.5rem;">Supporter - $150</h3>
+                            <ul style="list-style: none; padding: 0; line-height: 2;">
+                                <li style="padding: 0.25rem 0;">Logo on website</li>
+                                <li style="padding: 0.25rem 0;">1 conference ticket</li>
                             </ul>
                         </div>
-                        <div class="package">
-                            <h3>Champion - $500</h3>
-                            <ul>
-                                <li>Table on the first floor</li>
-                                <li>Logo on website</li>
-                                <li>Social media shout-out with sponsor rank</li>
-                                <li>2 conference tickets</li>
+                        <div class="package" style="background: rgba(30, 30, 30, 0.5); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 2px solid var(--cyan); border-radius: 10px; padding: 2rem; text-align: center; transition: all 0.3s; position: relative; box-shadow: 0 8px 32px 0 rgba(0, 229, 255, 0.1);">
+                            <h3 style="color: var(--cyan); margin-bottom: 1.5rem;">Champion - $500</h3>
+                            <ul style="list-style: none; padding: 0; line-height: 2;">
+                                <li style="padding: 0.25rem 0;">Table on the first floor</li>
+                                <li style="padding: 0.25rem 0;">Logo on website</li>
+                                <li style="padding: 0.25rem 0;">Social media shout-out</li>
+                                <li style="padding: 0.25rem 0;">2 conference tickets</li>
                             </ul>
                         </div>
-                        <div class="package">
-                            <h3>Elite - $1,000</h3>
-                            <ul>
-                                <li>Table space on the first floor</li>
-                                <li>Logo on website</li>
-                                <li>Social media shout-out</li>
-                                <li>Speaking slot (15 min)*</li>
-                                <li>3 conference tickets</li>
+                        <div class="package" style="background: linear-gradient(135deg, rgba(0, 229, 255, 0.15), rgba(0, 229, 255, 0.05)); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 2px solid var(--cyan); border-radius: 10px; padding: 2rem; text-align: center; transition: all 0.3s; position: relative; box-shadow: 0 8px 32px 0 rgba(0, 229, 255, 0.2);">
+                            <div style="position: absolute; top: 10px; right: 10px; background: var(--neon-pink); color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: bold;">BEST VALUE</div>
+                            <h3 style="color: var(--cyan); margin-bottom: 1.5rem; margin-top: 1rem;">Elite - $1,000</h3>
+                            <ul style="list-style: none; padding: 0; line-height: 2;">
+                                <li style="padding: 0.25rem 0;">Table space on first floor</li>
+                                <li style="padding: 0.25rem 0;">Logo on website</li>
+                                <li style="padding: 0.25rem 0;">Social media shout-out</li>
+                                <li style="padding: 0.25rem 0;"><strong>Speaking slot (15 min)*</strong></li>
+                                <li style="padding: 0.25rem 0;">3 conference tickets</li>
                             </ul>
-                            <p style="font-size: 0.9rem; margin-top: 1rem; font-style: italic;">*Speaking slot must be a cybersecurity story for the sponsor company. No marketing or sales pitches.</p>
+                            <p style="font-size: 0.8rem; margin-top: 1rem; font-style: italic; color: #a8a8a8;">*Cybersecurity story only. No sales pitches.</p>
                         </div>
                     </div>
 
-                    <div class="contact-cta">
-                        <p>Interested in sponsoring Guild Con 2025?</p>
-                        <a href="mailto:info@hackersguildpgh.com" class="btn btn-primary">Contact Us</a>
+                    <div class="contact-cta" style="text-align: center; padding: 2rem; background: rgba(30, 30, 30, 0.5); border-radius: 10px; border: 1px solid var(--neon-pink);">
+                        <p style="font-size: 1.3rem; margin-bottom: 1.5rem; color: var(--text-light);">Interested in sponsoring Guild Con 2025?</p>
+                        <a href="mailto:info@hackersguildpgh.com" class="btn btn-primary" style="font-size: 1.2rem; padding: 1rem 2rem;">Contact Us Today</a>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer>
+    <footer role="contentinfo">
         <div class="container">
-            <p>&copy; 2025 Hackers Guild Pittsburgh. All rights reserved. | <a href="code-of-conduct.html">Code of Conduct</a></p>
+            <p>&copy; 2025 Hackers Guild Pittsburgh. All rights reserved. | <a href="code-of-conduct.html">Code of Conduct</a> | <a href="accessibility.html">Accessibility</a> | <a href="terms.html">Terms</a> | <a href="privacy.html">Privacy</a> | <a href="photo-policy.html">Photo Policy</a></p>
             <div class="social-links">
                 <span>Follow us:</span>
                 <a href="https://x.com/hackersguildpgh" title="Twitter"><i class="fab fa-twitter"></i></a>
@@ -137,6 +147,13 @@
         </div>
     </footer>
 
+    <!-- Accessibility Toggle -->
+    <button id="a11y-toggle" aria-label="Toggle accessibility mode" aria-pressed="false">
+        <i class="fas fa-wheelchair"></i>
+        <span>Accessibility</span>
+        <div class="a11y-tooltip">Toggle Accessibility Mode</div>
+    </button>
+    <div id="a11y-announcements" aria-live="polite" aria-atomic="true"></div>
     <script src="js/modern.js"></script>
 </body>
 </html>
