@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guild Con 2025 - Hackers Guild Pittsburgh</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/modern-style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -34,7 +34,10 @@
 
     <main>
         <section class="hero">
-            <div class="container">
+            <div class="hero-bg">
+                <img src="img/banner.png" alt="Guild Con 2025">
+            </div>
+            <div class="hero-content">
                 <h1>Guild Con 2025</h1>
                 <p class="tagline">Celebrating Hackers Guild Pittsburgh's 1st Birthday!</p>
                 <p class="date">November 22, 2025 | Pittsburgh, PA</p>
@@ -69,6 +72,37 @@
                         <h3>CTF Tournament</h3>
                         <p>24 players, 8 teams, single-elimination bracket. Test your skills!</p>
                         <a href="ctf.html" class="link">Learn More →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="tickets">
+            <div class="container">
+                <h2>Ticket Options</h2>
+                <div class="grid" style="max-width: 800px; margin: 2rem auto;">
+                    <div class="card">
+                        <h3>General Admission</h3>
+                        <p>Full access to:</p>
+                        <ul style="text-align: left; margin: 1rem 0;">
+                            <li>Event floor</li>
+                            <li>All talks</li>
+                            <li>Community activities</li>
+                        </ul>
+                        <p class="note" style="color: var(--neon-pink);">CTF and workshops require separate tickets</p>
+                        <a href="https://events.humanitix.com/guildcon" class="btn btn-secondary" style="margin-top: 1rem;">Get Ticket</a>
+                    </div>
+                    <div class="card" style="border-color: var(--neon-pink);">
+                        <h3 style="color: var(--neon-pink);">CTF Elimination Ticket</h3>
+                        <p><strong>Includes everything:</strong></p>
+                        <ul style="text-align: left; margin: 1rem 0;">
+                            <li>General admission</li>
+                            <li>CTF tournament entry</li>
+                            <li>Team assignment (3 per team)</li>
+                            <li>Chance at prizes</li>
+                        </ul>
+                        <p class="note" style="color: var(--neon-cyan);">Limited: Only 24 spots available!</p>
+                        <a href="https://events.humanitix.com/guildcon" class="btn btn-primary" style="margin-top: 1rem;">Get CTF Ticket</a>
                     </div>
                 </div>
             </div>
@@ -117,6 +151,6 @@
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
+    <script src="js/modern.js"></script>
 </body>
 </html>
