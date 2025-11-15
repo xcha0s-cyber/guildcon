@@ -8,6 +8,242 @@
     <link rel="stylesheet" href="css/accessibility.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        .talks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .talks-grid.center-single {
+            display: flex;
+            justify-content: center;
+        }
+
+        .talks-grid.center-single .talk-tile {
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .talk-tile {
+            background: rgba(15, 15, 30, 0.8);
+            border: 2px solid rgba(0, 229, 255, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .talk-tile:hover {
+            border-color: var(--cyan);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 229, 255, 0.3);
+        }
+
+        .talk-tile.keynote {
+            border-color: rgba(255, 0, 170, 0.5);
+        }
+
+        .talk-tile.keynote:hover {
+            border-color: var(--neon-pink);
+            box-shadow: 0 8px 24px rgba(255, 0, 170, 0.3);
+        }
+
+        .talk-time-badge {
+            display: inline-block;
+            background: rgba(0, 229, 255, 0.2);
+            color: var(--cyan);
+            padding: 0.35rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            margin-bottom: 0.75rem;
+        }
+
+        .keynote .talk-time-badge {
+            background: rgba(255, 0, 170, 0.2);
+            color: var(--neon-pink);
+        }
+
+        .talk-tile h3 {
+            font-size: 1.2rem;
+            margin: 0.5rem 0;
+            color: var(--cyan);
+        }
+
+        .keynote h3 {
+            color: var(--neon-pink);
+        }
+
+        .talk-tile .speaker {
+            color: #fff;
+            font-weight: 600;
+            margin: 0.5rem 0;
+        }
+
+        .talk-tile .click-hint {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.5);
+            margin-top: 1rem;
+            font-style: italic;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%);
+            border: 2px solid var(--cyan);
+            border-radius: 12px;
+            padding: 2rem;
+            max-width: 800px;
+            width: 90%;
+            max-height: 85vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 16px 48px rgba(0, 229, 255, 0.4);
+            animation: modalSlideIn 0.3s ease-out;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-content.keynote-modal {
+            border-color: var(--neon-pink);
+            box-shadow: 0 16px 48px rgba(255, 0, 170, 0.4);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--cyan);
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .close-modal:hover {
+            color: #fff;
+            transform: rotate(90deg);
+        }
+
+        .modal-header {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid rgba(0, 229, 255, 0.3);
+        }
+
+        .keynote-modal .modal-header {
+            border-bottom-color: rgba(255, 0, 170, 0.3);
+        }
+
+        .modal-header h2 {
+            color: var(--cyan);
+            margin: 0 0 0.5rem 0;
+            font-size: 1.8rem;
+        }
+
+        .keynote-modal .modal-header h2 {
+            color: var(--neon-pink);
+        }
+
+        .modal-header .speaker-name {
+            color: #fff;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .modal-header .time {
+            color: var(--cyan);
+            font-size: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .modal-body {
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.7;
+        }
+
+        .modal-body h3 {
+            color: var(--cyan);
+            margin: 1.5rem 0 1rem 0;
+        }
+
+        .modal-body p {
+            margin-bottom: 1rem;
+        }
+
+        .modal-body ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .modal-body .bio-section {
+            background: rgba(0, 229, 255, 0.05);
+            border-left: 3px solid var(--cyan);
+            padding: 1rem 1.5rem;
+            margin-top: 2rem;
+            border-radius: 4px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin: 3rem 0 1.5rem 0;
+            font-size: 1.8rem;
+            color: var(--cyan);
+            font-family: 'Orbitron', monospace;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        @media (max-width: 768px) {
+            .talks-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                width: 95%;
+                padding: 1.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <a href="#main" class="skip-nav">Skip to main content</a>
@@ -25,7 +261,7 @@
                 </button>
                 <ul class="nav-links" id="navLinks">
                     <li><a href="/">Home</a></li>
-                    <li><a href="cfp">CFP</a></li>
+                    <li><a href="schedule">Schedule</a></li>
                     <li><a href="talks" class="active">Talks</a></li>
                     <li><a href="workshops">Workshops</a></li>
                     <li><a href="ctf">CTF</a></li>
@@ -61,23 +297,97 @@
                     </p>
                 </div>
 
-                <div class="schedule-note">
-                    <h2 style="text-align: center; margin-bottom: 1rem;">All talks will be listed here after CFP submission closes</h2>
-                    <p style="text-align: center;">Check back after October 31, 2025 for the complete schedule</p>
-                </div>
-
-                <!--
-                When talks are confirmed, update this section with actual talks like:
-
-                <div class="talk-item">
-                    <div class="talk-time">10:15 AM - 11:00 AM</div>
-                    <div class="talk-details">
-                        <h3>Bypassing Modern EDR Solutions</h3>
-                        <p class="speaker">Jane Doe - Senior Red Team Operator at SecurityCorp</p>
-                        <p class="description">Learn advanced techniques for evading endpoint detection and response systems using process injection, API unhooking, and syscall manipulation.</p>
+                <h2 class="section-title">Opening Remarks</h2>
+                <div class="talks-grid center-single">
+                    <div class="talk-tile" onclick="openModal('opening')">
+                        <div class="talk-time-badge">10:00 AM - 10:15 AM</div>
+                        <h3>Opening Remarks</h3>
+                        <p class="speaker">Guild Master</p>
+                        <p class="click-hint">Click for details</p>
                     </div>
                 </div>
-                -->
+
+                <h2 class="section-title">Keynote</h2>
+                <div class="talks-grid center-single">
+                    <div class="talk-tile keynote" onclick="openModal('keynote')">
+                        <div class="talk-time-badge">10:15 AM - 10:30 AM</div>
+                        <h3>The Hacker Spirit: Building the Next Chapter of Our Community</h3>
+                        <p class="speaker">Sam Dlinn</p>
+                        <p class="click-hint">Click for details</p>
+                    </div>
+                </div>
+
+                <h2 class="section-title">Morning Sessions</h2>
+                <div class="talks-grid">
+                    <div class="talk-tile" onclick="openModal('hades')">
+                        <div class="talk-time-badge">10:30 AM - 10:45 AM</div>
+                        <h3>Harnessing AI to Disrupt and Evaluate Security (HADES)</h3>
+                        <p class="speaker">Vic Fernandez</p>
+                        <p class="click-hint">Click for details</p>
+                    </div>
+
+                    <div class="talk-tile" onclick="openModal('greyfox')">
+                        <div class="talk-time-badge">11:00 AM - 12:00 PM</div>
+                        <h3>Going AFK: A Discussion on Standing Up and Standing Out</h3>
+                        <p class="speaker">Grey Fox</p>
+                        <p class="click-hint">Click for details</p>
+                    </div>
+
+                    <div class="talk-tile" onclick="openModal('dean')">
+                        <div class="talk-time-badge">12:15 PM - 12:30 PM</div>
+                        <h3>Under the Wireless Security Hood: Why RF Basics Matter for Security and Resiliency</h3>
+                        <p class="speaker">Dean Galitsis</p>
+                        <p class="click-hint">Click for details</p>
+                    </div>
+                </div>
+
+                <h2 class="section-title">Afternoon Sessions</h2>
+                <div class="talks-grid">
+                    <div class="talk-tile" onclick="openModal('bugbounty')">
+                        <div class="talk-time-badge">1:00 PM - 2:00 PM</div>
+                        <h3>Bug Bounty & Money in Security – A Beginner's Guide</h3>
+                        <p class="speaker">Sam Dlinn</p>
+                        <p class="click-hint">Click for details</p>
+                    </div>
+
+                    <div class="talk-tile" onclick="openModal('stephen')">
+                        <div class="talk-time-badge">2:00 PM - 3:00 PM</div>
+                        <h3>Inspire the Next Generation</h3>
+                        <p class="speaker">Stephen Bish - Founder, ZOOBOTZ</p>
+                        <p class="click-hint">Click for details</p>
+                    </div>
+
+                    <div class="talk-tile" onclick="openModal('repair')">
+                        <div class="talk-time-badge">3:00 PM - 4:00 PM</div>
+                        <h3>The Right to Repair: Ownership, Planet, and Prosperity</h3>
+                        <p class="speaker">Saul Wells - Founder, Mana Gaming LLC</p>
+                        <p class="click-hint">Click for details</p>
+                    </div>
+
+                    <div class="talk-tile" onclick="openModal('crypto')">
+                        <div class="talk-time-badge">4:00 PM - 5:00 PM</div>
+                        <h3>Cryptography for Hackers and Engineers</h3>
+                        <p class="speaker">Josh McIntyre (chaintuts)</p>
+                        <p class="click-hint">Click for details</p>
+                    </div>
+                </div>
+
+                <h2 class="section-title">Evening Sessions</h2>
+                <div class="talks-grid">
+                    <div class="talk-tile" onclick="openModal('art')">
+                        <div class="talk-time-badge">5:00 PM - 5:45 PM</div>
+                        <h3>Beyond the Clip: Modern Firmware Extraction in the Real World</h3>
+                        <p class="speaker">ART</p>
+                        <p class="click-hint">Click for details</p>
+                    </div>
+
+                    <div class="talk-tile" onclick="openModal('tba1')">
+                        <div class="talk-time-badge">6:00 PM - 6:45 PM</div>
+                        <h3>To Be Announced</h3>
+                        <p class="speaker">Speaker TBA</p>
+                        <p class="click-hint">Click for details</p>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
@@ -104,6 +414,200 @@
         <div class="a11y-tooltip">Toggle Accessibility Mode</div>
     </button>
     <div id="a11y-announcements" aria-live="polite" aria-atomic="true"></div>
+
+    <!-- Modals for each talk -->
+    <div id="modal-container"></div>
+
     <script src="js/modern.min.js"></script>
+    <script>
+        const talks = {
+            opening: {
+                title: "Opening Remarks",
+                speaker: "Guild Master",
+                time: "10:00 AM - 10:15 AM",
+                description: "Welcome to Guild Con 2025 and Hackers Guild Pittsburgh's 1st birthday celebration!",
+                bio: "",
+                isKeynote: false
+            },
+            keynote: {
+                title: "The Hacker Spirit: Building the Next Chapter of Our Community",
+                speaker: "Sam Dlinn",
+                time: "10:15 AM - 10:30 AM",
+                description: "",
+                bio: "",
+                isKeynote: true
+            },
+            hades: {
+                title: "Harnessing AI to Disrupt and Evaluate Security (HADES)",
+                speaker: "Vic Fernandez",
+                time: "10:30 AM - 10:45 AM + 15 min Q&A",
+                description: `<p>Traditional tools used to facilitate cyber defense training are inaccurate, inefficient, or overly complex--leaving stakeholders uncertain about their blue team's ability to detect, respond to, and recover from cyber threat actors. This presentation introduces HADES, a free and open-source software solution that uses AI to dynamically introduce realistic scenarios during cyber defense training exercises.</p>
+                    <p>Attendees will learn how HADES uses multi-agent conversation patterns and open-source penetration tools to stress-test the blue team. They will learn how HADES addresses technical challenges like removing the need for prompt engineering expertise throughout the user experience, ensuring realism while mitigating risk, and enforcing rules of engagement. Attendees will also explore how AI-powered applications like HADES could shape the future of self-development for blue teamers.</p>
+                    <p>The presentation will be structured as follows: introduction (2 minutes), motivation that led to the creation of HADES (3 minutes), and a live demonstration of running HADES (10 minutes).</p>`,
+                bio: "",
+                isKeynote: false
+            },
+            greyfox: {
+                title: "Going AFK: A Discussion on Standing Up and Standing Out",
+                speaker: "Grey Fox",
+                time: "11:00 AM - 12:00 PM + 15 min Q&A",
+                description: `<p>Going AFK (away from keyboard) means a lot of things. For a hacker exercising their First Amendment rights these days, it means serious preparation and answering hard questions. It means finding the safest and most survivable course of action for yourself and your group.</p>
+                    <p>Security-minded planning for events here, or in any city, demands site surveys, proper clothing and tools, digital privacy, escape and evasion, and checklists for all of it. Let's cover some of these essentials and give ourselves a head start.</p>`,
+                bio: "",
+                isKeynote: false
+            },
+            dean: {
+                title: "Under the Wireless Security Hood: Why RF Basics Matter for Security and Resiliency",
+                speaker: "Dean Galitsis",
+                time: "12:15 PM - 12:30 PM",
+                description: `<p>We'll explore why a solid understanding of radio principles—rooted in amateur (ham) radio—remains highly relevant to modern cybersecurity practice. Wi-Fi, cellular networks, GPS, and many other technologies we defend every day are fundamentally radio systems, and recognizing that helps us better understand their vulnerabilities, failure modes, and attack surfaces.</p>
+                    <p>We'll also highlight how ham radio offers unique advantages for business continuity and disaster response, providing resilient, decentralized communication channels when conventional infrastructure is degraded or unavailable. By reconnecting with the foundational physics and practical skills of radio, cybersecurity professionals can strengthen both their defensive insight and their operational resilience.</p>`,
+                bio: "",
+                isKeynote: false
+            },
+            bugbounty: {
+                title: "Bug Bounty & Money in Security – A Beginner's Guide",
+                speaker: "Sam Dlinn",
+                time: "1:00 PM - 2:00 PM + 15 min Q&A",
+                description: `<p>Are you curious about how hackers legally earn money by finding security flaws? Join us for an engaging, beginner friendly talk on the world of bug bounties.</p>
+                    <p>We'll start by demystifying what bug bounty programs are, why companies pay for vulnerabilities, and how you can get started, even with no prior experience. You'll learn about the most common types of security bugs, as well as why these issues matter and how to responsibly submit your first bug. Because the AI overlords are taking over, we'll also explore how AI is rapidly changing the bug bounty landscape.</p>
+                    <p>Whether you're looking to break into security, earn extra income, or just understand how hackers help make the internet safer, this talk will give you the roadmap to get started.</p>`,
+                bio: "",
+                isKeynote: false
+            },
+            stephen: {
+                title: "Inspire the Next Generation",
+                speaker: "Stephen Bish - Founder, ZOOBOTZ",
+                time: "2:00 PM - 3:00 PM + 15 min Q&A",
+                description: `<p>Join Stephen Bish as he shares his unique perspective on the current state of cybersecurity and highlights some of the key strategic and technical challenges that many organizations face as they attempt to navigate the shifting landscape of cybersecurity.</p>
+                    <p>Attendees can also expect a passionate reminder of the importance to inspire and support the next generation of infosec professionals as Stephen shares his contribution to that mission in the form of an educational cybersecurity card game for classrooms, conferences and beyond!</p>`,
+                bio: `<div class="bio-section"><h3>About the Speaker</h3><p>With almost two decades of experience in cybersecurity, Stephen Bish is a seasoned expert in network security, ethical hacking, and digital forensics. With numerous certifications and a degree in Network Security and Computer Forensics, Stephen has led hundreds of professional initiatives in penetration testing, incident response, and cyber risk management.</p>
+                    <p>Stephen helps clients across all industries as the Manager of Cyber Consulting at Schneider Downs. His leadership and innovation have earned him recognition as Cybersecurity Innovator of the Year (2020) and recipient of the Cybersecurity Award of Excellence (2024). As a mentor, thought leader and public speaker, Stephen is passionate about inspiring the next generation of infosec professionals by making cyber concepts fun and accessible.</p>
+                    <p>Learn more about ZOOBOTZ at <a href="https://www.zoobotz.org" style="color: var(--cyan);" target="_blank">https://www.zoobotz.org</a><br>
+                    Follow ZOOBOTZ at <a href="https://www.linkedin.com/company/zoobotz" style="color: var(--cyan);" target="_blank">https://www.linkedin.com/company/zoobotz</a><br>
+                    Connect with Stephen at <a href="https://www.linkedin.com/in/stephenbish/" style="color: var(--cyan);" target="_blank">https://www.linkedin.com/in/stephenbish/</a></p></div>`,
+                isKeynote: false
+            },
+            repair: {
+                title: "The Right to Repair: Ownership, Planet, and Prosperity",
+                speaker: "Saul Wells - Founder, Mana Gaming LLC",
+                time: "3:00 PM - 4:00 PM + 15 min Q&A",
+                description: `<p>Join Saul David Wells Jr., Founder of Mana Gaming LLC, for a powerful exploration of the Right to Repair movement. This is not merely a plea for consumer convenience; it is an essential pillar of property ownership, environmental responsibility, and local small business viability.</p>
+                    <h3>Key Topics</h3>
+                    <ul>
+                        <li><strong>The Principle of Ownership:</strong> Why buying a product should mean truly owning it—with the full right to fix or modify it—instead of agreeing to a "de facto lease" dictated by manufacturers. He will expose the proprietary fasteners and digital locks (Part Pairing) manufacturers use to engineer repair out of existence.</li>
+                        <li><strong>The Catastrophe of E-Waste:</strong> How the manufactured inability to repair fuels the global e-waste crisis. Saul will share how Mana Gaming breathes life back into devices, arguing that the Right to Repair must include an ethical demand for open-sourcing End-of-Life (EOL) products to extend their lifespan indefinitely.</li>
+                        <li><strong>The Promise of a Repair Economy:</strong> How granting access to schematics and parts is a powerful engine for local prosperity, creating stable, skilled jobs. Saul will discuss the vital role of independent repair shops and how his own intro to electronic repair classes empower the next generation with technological literacy and problem-solving skills.</li>
+                    </ul>
+                    <p>This talk is a call to action to end the culture of manufactured disposal and make the Right to Repair a reality.</p>`,
+                bio: `<div class="bio-section"><h3>About the Speaker</h3><p>Saul David Wells Jr. is a passionate operations professional and the driving force behind Mana Gaming LLC, a business rooted in his lifelong love for electronics repair. Born from a hobby, Saul has been the trusted tech expert among his peers since his youth, continually honing his exceptional repair skills.</p>
+                    <p>Mana Gaming is more than just a repair service; it's a commitment to community. Inspired by his desire to create social connections for his stepson, Saul initially founded Mana Gaming to facilitate community gaming events. Today, operating out of the Hackers Guild, he provides expert electronics repair and actively empowers others by personally leading introductory repair workshops. Saul is an organized and skilled leader, blending his technical expertise with a genuine passion for community building.</p></div>`,
+                isKeynote: false
+            },
+            crypto: {
+                title: "Cryptography for Hackers and Engineers",
+                speaker: "Josh McIntyre (chaintuts)",
+                time: "4:00 PM - 5:00 PM + 15 min Q&A",
+                description: `<p>Cryptography is foundational to a lot of security practices and secure software engineering...but it can be a little confusing at times. This talk is about understanding crypto and its applications for the average security professional, hacker, and software engineer.</p>
+                    <h3>We'll cover the big 3 that most often apply to practices:</h3>
+                    <ul>
+                        <li><strong>Hashing:</strong> One way functions that mix up data - one output for one input, the same output every time
+                            <ul>
+                                <li>Use cases: Password hashing</li>
+                                <li>Use cases: Blockchains - POW mining, transaction ids</li>
+                                <li>Use cases: File integrity verification</li>
+                            </ul>
+                        </li>
+                        <li><strong>Asymmetric encryption and digital signatures:</strong> Public/private keys
+                            <ul>
+                                <li>Use cases: TLS encryption between client/server (HTTPS)</li>
+                                <li>Use cases: Passwordless auth (server stores pubkey, user signs auth message with privkey)</li>
+                                <li>Use cases: Digital currency transactions</li>
+                            </ul>
+                        </li>
+                        <li><strong>Symmetric encryption:</strong> Uses a key (or a stretched password) to encrypt data
+                            <ul>
+                                <li>Use case: Full disk encryption</li>
+                                <li>Use case: File encryption using a password</li>
+                            </ul>
+                        </li>
+                    </ul>`,
+                bio: `<div class="bio-section"><h3>About the Speaker</h3><p>Josh McIntyre is a professional software engineer and technical educator with a passion for cryptocurrency technology and teaching others. With his project chaintuts, he creates free and open license tech education content centering around cryptocurrencies, cybersecurity, and computer science.</p>
+                    <p>Josh has over 10 years of experience as a computer science professional, including working at Microsoft, speaking on cryptocurrencies at DEFCON as chaintuts, and volunteering with the Cryptocurrency Certification Consortium.</p></div>`,
+                isKeynote: false
+            },
+            art: {
+                title: "Beyond the Clip: Modern Firmware Extraction in the Real World",
+                speaker: "ART",
+                time: "5:00 PM - 5:45 PM + 15 min Q&A",
+                description: `<p>Most talks on firmware ripping stop at "find the pads, hook the UART, clip the flash." This session goes further. We'll explore the creative, practical, and sometimes downright weird techniques used to pull code out of tightly locked or poorly-designed devices: hardware tricks, boot-time observations, unintended debug paths, and other approaches that blur the line between hardware, software, and analysis.</p>
+                    <p>Whether you're new to firmware or a seasoned reverser, you'll leave with a richer toolbox and a few ideas you probably haven't tried yet.</p>`,
+                bio: "",
+                isKeynote: false
+            },
+            tba1: {
+                title: "To Be Announced",
+                speaker: "Speaker TBA",
+                time: "6:00 PM - 6:45 PM + 15 min Q&A",
+                description: "<p>This session will be announced soon. Check back for updates!</p>",
+                bio: "",
+                isKeynote: false
+            }
+        };
+
+        function openModal(talkId) {
+            const talk = talks[talkId];
+            if (!talk) return;
+
+            const modalClass = talk.isKeynote ? 'keynote-modal' : '';
+            const modalHTML = `
+                <div class="modal active" id="modal-${talkId}" onclick="closeModalOnBackdrop(event, '${talkId}')">
+                    <div class="modal-content ${modalClass}">
+                        <button class="close-modal" onclick="closeModal('${talkId}')" aria-label="Close modal">&times;</button>
+                        <div class="modal-header">
+                            <h2>${talk.title}</h2>
+                            <div class="speaker-name">${talk.speaker}</div>
+                            <div class="time"><i class="fas fa-clock"></i> ${talk.time}</div>
+                        </div>
+                        <div class="modal-body">
+                            ${talk.description}
+                            ${talk.bio}
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('modal-container').innerHTML = modalHTML;
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(talkId) {
+            const modal = document.getElementById(`modal-${talkId}`);
+            if (modal) {
+                modal.classList.remove('active');
+                setTimeout(() => {
+                    document.getElementById('modal-container').innerHTML = '';
+                    document.body.style.overflow = 'auto';
+                }, 300);
+            }
+        }
+
+        function closeModalOnBackdrop(event, talkId) {
+            if (event.target.classList.contains('modal')) {
+                closeModal(talkId);
+            }
+        }
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                const modalContainer = document.getElementById('modal-container');
+                if (modalContainer.innerHTML) {
+                    modalContainer.innerHTML = '';
+                    document.body.style.overflow = 'auto';
+                }
+            }
+        });
+    </script>
 </body>
 </html>
