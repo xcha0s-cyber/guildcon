@@ -83,11 +83,49 @@
             margin: 0.5rem 0;
         }
 
+        .talk-tile .speaker-photo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--cyan);
+            margin: 1rem auto 0.5rem auto;
+            display: block;
+            transition: all 0.3s ease;
+        }
+
+        .keynote .speaker-photo {
+            border-color: var(--neon-pink);
+        }
+
+        .talk-tile:hover .speaker-photo {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(0, 229, 255, 0.5);
+        }
+
+        .keynote:hover .speaker-photo {
+            box-shadow: 0 0 20px rgba(255, 0, 170, 0.5);
+        }
+
         .talk-tile .click-hint {
             font-size: 0.85rem;
             color: rgba(255, 255, 255, 0.5);
             margin-top: 1rem;
             font-style: italic;
+        }
+
+        .modal-speaker-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--cyan);
+            margin: 0 auto 1.5rem auto;
+            display: block;
+        }
+
+        .keynote-modal .modal-speaker-photo {
+            border-color: var(--neon-pink);
         }
 
         /* Modal Styles */
@@ -310,6 +348,7 @@
                 <h2 class="section-title">Keynote</h2>
                 <div class="talks-grid center-single">
                     <div class="talk-tile keynote" onclick="openModal('keynote')">
+                        <img src="pics_spekers/key_note.png" alt="Sam Dlinn" class="speaker-photo">
                         <div class="talk-time-badge">10:15 AM - 10:30 AM</div>
                         <h3>The Hacker Spirit: Building the Next Chapter of Our Community</h3>
                         <p class="speaker">Sam Dlinn</p>
@@ -320,6 +359,7 @@
                 <h2 class="section-title">Morning Sessions</h2>
                 <div class="talks-grid">
                     <div class="talk-tile" onclick="openModal('hades')">
+                        <img src="pics_spekers/vic_fernadez.png" alt="Vic Fernandez" class="speaker-photo">
                         <div class="talk-time-badge">10:30 AM - 10:45 AM</div>
                         <h3>Harnessing AI to Disrupt and Evaluate Security (HADES)</h3>
                         <p class="speaker">Vic Fernandez</p>
@@ -327,6 +367,7 @@
                     </div>
 
                     <div class="talk-tile" onclick="openModal('greyfox')">
+                        <img src="pics_spekers/Grey_fox.png" alt="Grey Fox" class="speaker-photo">
                         <div class="talk-time-badge">11:00 AM - 12:00 PM</div>
                         <h3>Going AFK: A Discussion on Standing Up and Standing Out</h3>
                         <p class="speaker">Grey Fox</p>
@@ -334,6 +375,7 @@
                     </div>
 
                     <div class="talk-tile" onclick="openModal('dean')">
+                        <img src="pics_spekers/Dean_Galitsis.png" alt="Dean Galitsis" class="speaker-photo">
                         <div class="talk-time-badge">12:15 PM - 12:30 PM</div>
                         <h3>Under the Wireless Security Hood: Why RF Basics Matter for Security and Resiliency</h3>
                         <p class="speaker">Dean Galitsis</p>
@@ -344,6 +386,7 @@
                 <h2 class="section-title">Afternoon Sessions</h2>
                 <div class="talks-grid">
                     <div class="talk-tile" onclick="openModal('bugbounty')">
+                        <img src="pics_spekers/sam_Dlinn_Bug_bounty.png" alt="Sam Dlinn" class="speaker-photo">
                         <div class="talk-time-badge">1:00 PM - 2:00 PM</div>
                         <h3>Bug Bounty & Money in Security – A Beginner's Guide</h3>
                         <p class="speaker">Sam Dlinn</p>
@@ -351,6 +394,7 @@
                     </div>
 
                     <div class="talk-tile" onclick="openModal('stephen')">
+                        <img src="pics_spekers/Stephen_bish.png" alt="Stephen Bish" class="speaker-photo">
                         <div class="talk-time-badge">2:00 PM - 3:00 PM</div>
                         <h3>Inspire the Next Generation</h3>
                         <p class="speaker">Stephen Bish - Founder, ZOOBOTZ</p>
@@ -358,6 +402,7 @@
                     </div>
 
                     <div class="talk-tile" onclick="openModal('repair')">
+                        <img src="pics_spekers/Saul_wells.png" alt="Saul Wells" class="speaker-photo">
                         <div class="talk-time-badge">3:00 PM - 4:00 PM</div>
                         <h3>The Right to Repair: Ownership, Planet, and Prosperity</h3>
                         <p class="speaker">Saul Wells - Founder, Mana Gaming LLC</p>
@@ -365,6 +410,7 @@
                     </div>
 
                     <div class="talk-tile" onclick="openModal('crypto')">
+                        <img src="pics_spekers/Josh_Mclntyre.png" alt="Josh McIntyre" class="speaker-photo">
                         <div class="talk-time-badge">4:00 PM - 5:00 PM</div>
                         <h3>Cryptography for Hackers and Engineers</h3>
                         <p class="speaker">Josh McIntyre (chaintuts)</p>
@@ -375,6 +421,7 @@
                 <h2 class="section-title">Evening Sessions</h2>
                 <div class="talks-grid">
                     <div class="talk-tile" onclick="openModal('art')">
+                        <img src="pics_spekers/Art.png" alt="ART" class="speaker-photo">
                         <div class="talk-time-badge">5:00 PM - 5:45 PM</div>
                         <h3>Beyond the Clip: Modern Firmware Extraction in the Real World</h3>
                         <p class="speaker">ART</p>
@@ -434,6 +481,7 @@
                 time: "10:00 AM - 10:15 AM",
                 description: "Welcome to Guild Con 2025 and Hackers Guild Pittsburgh's 1st birthday celebration!",
                 bio: "",
+                photo: "",
                 isKeynote: false
             },
             keynote: {
@@ -442,6 +490,7 @@
                 time: "10:15 AM - 10:30 AM",
                 description: "",
                 bio: "",
+                photo: "pics_spekers/key_note.png",
                 isKeynote: true
             },
             hades: {
@@ -452,6 +501,7 @@
                     <p>Attendees will learn how HADES uses multi-agent conversation patterns and open-source penetration tools to stress-test the blue team. They will learn how HADES addresses technical challenges like removing the need for prompt engineering expertise throughout the user experience, ensuring realism while mitigating risk, and enforcing rules of engagement. Attendees will also explore how AI-powered applications like HADES could shape the future of self-development for blue teamers.</p>
                     <p>The presentation will be structured as follows: introduction (2 minutes), motivation that led to the creation of HADES (3 minutes), and a live demonstration of running HADES (10 minutes).</p>`,
                 bio: "",
+                photo: "pics_spekers/vic_fernadez.png",
                 isKeynote: false
             },
             greyfox: {
@@ -461,6 +511,7 @@
                 description: `<p>Going AFK (away from keyboard) means a lot of things. For a hacker exercising their First Amendment rights these days, it means serious preparation and answering hard questions. It means finding the safest and most survivable course of action for yourself and your group.</p>
                     <p>Security-minded planning for events here, or in any city, demands site surveys, proper clothing and tools, digital privacy, escape and evasion, and checklists for all of it. Let's cover some of these essentials and give ourselves a head start.</p>`,
                 bio: "",
+                photo: "pics_spekers/Grey_fox.png",
                 isKeynote: false
             },
             dean: {
@@ -470,6 +521,7 @@
                 description: `<p>We'll explore why a solid understanding of radio principles—rooted in amateur (ham) radio—remains highly relevant to modern cybersecurity practice. Wi-Fi, cellular networks, GPS, and many other technologies we defend every day are fundamentally radio systems, and recognizing that helps us better understand their vulnerabilities, failure modes, and attack surfaces.</p>
                     <p>We'll also highlight how ham radio offers unique advantages for business continuity and disaster response, providing resilient, decentralized communication channels when conventional infrastructure is degraded or unavailable. By reconnecting with the foundational physics and practical skills of radio, cybersecurity professionals can strengthen both their defensive insight and their operational resilience.</p>`,
                 bio: "",
+                photo: "pics_spekers/Dean_Galitsis.png",
                 isKeynote: false
             },
             bugbounty: {
@@ -480,6 +532,7 @@
                     <p>We'll start by demystifying what bug bounty programs are, why companies pay for vulnerabilities, and how you can get started, even with no prior experience. You'll learn about the most common types of security bugs, as well as why these issues matter and how to responsibly submit your first bug. Because the AI overlords are taking over, we'll also explore how AI is rapidly changing the bug bounty landscape.</p>
                     <p>Whether you're looking to break into security, earn extra income, or just understand how hackers help make the internet safer, this talk will give you the roadmap to get started.</p>`,
                 bio: "",
+                photo: "pics_spekers/sam_Dlinn_Bug_bounty.png",
                 isKeynote: false
             },
             stephen: {
@@ -493,6 +546,7 @@
                     <p>Learn more about ZOOBOTZ at <a href="https://www.zoobotz.org" style="color: var(--cyan);" target="_blank">https://www.zoobotz.org</a><br>
                     Follow ZOOBOTZ at <a href="https://www.linkedin.com/company/zoobotz" style="color: var(--cyan);" target="_blank">https://www.linkedin.com/company/zoobotz</a><br>
                     Connect with Stephen at <a href="https://www.linkedin.com/in/stephenbish/" style="color: var(--cyan);" target="_blank">https://www.linkedin.com/in/stephenbish/</a></p></div>`,
+                photo: "pics_spekers/Stephen_bish.png",
                 isKeynote: false
             },
             repair: {
@@ -509,6 +563,7 @@
                     <p>This talk is a call to action to end the culture of manufactured disposal and make the Right to Repair a reality.</p>`,
                 bio: `<div class="bio-section"><h3>About the Speaker</h3><p>Saul David Wells Jr. is a passionate operations professional and the driving force behind Mana Gaming LLC, a business rooted in his lifelong love for electronics repair. Born from a hobby, Saul has been the trusted tech expert among his peers since his youth, continually honing his exceptional repair skills.</p>
                     <p>Mana Gaming is more than just a repair service; it's a commitment to community. Inspired by his desire to create social connections for his stepson, Saul initially founded Mana Gaming to facilitate community gaming events. Today, operating out of the Hackers Guild, he provides expert electronics repair and actively empowers others by personally leading introductory repair workshops. Saul is an organized and skilled leader, blending his technical expertise with a genuine passion for community building.</p></div>`,
+                photo: "pics_spekers/Saul_wells.png",
                 isKeynote: false
             },
             crypto: {
@@ -541,6 +596,7 @@
                     </ul>`,
                 bio: `<div class="bio-section"><h3>About the Speaker</h3><p>Josh McIntyre is a professional software engineer and technical educator with a passion for cryptocurrency technology and teaching others. With his project chaintuts, he creates free and open license tech education content centering around cryptocurrencies, cybersecurity, and computer science.</p>
                     <p>Josh has over 10 years of experience as a computer science professional, including working at Microsoft, speaking on cryptocurrencies at DEFCON as chaintuts, and volunteering with the Cryptocurrency Certification Consortium.</p></div>`,
+                photo: "pics_spekers/Josh_Mclntyre.png",
                 isKeynote: false
             },
             art: {
@@ -550,6 +606,7 @@
                 description: `<p>Most talks on firmware ripping stop at "find the pads, hook the UART, clip the flash." This session goes further. We'll explore the creative, practical, and sometimes downright weird techniques used to pull code out of tightly locked or poorly-designed devices: hardware tricks, boot-time observations, unintended debug paths, and other approaches that blur the line between hardware, software, and analysis.</p>
                     <p>Whether you're new to firmware or a seasoned reverser, you'll leave with a richer toolbox and a few ideas you probably haven't tried yet.</p>`,
                 bio: "",
+                photo: "pics_spekers/Art.png",
                 isKeynote: false
             },
             giselle: {
@@ -561,6 +618,7 @@
                 bio: `<div class="bio-section"><h3>About the Speaker</h3><p><strong>Giselle M Akal</strong><br>
                     IT Help Desk Technician | BCAT CompTIA Pathway | Security+ in Progress</p>
                     <p>Featured by Buffalo Toronto Public Media, Giselle is advocating for accessible cybersecurity training for adult and nontraditional learners.</p></div>`,
+                photo: "",
                 isKeynote: false
             },
             workforce: {
@@ -583,6 +641,7 @@
                     <p>John currently works for a global corporation doing cyber threat intelligence investigating cyber criminals and nation state actors. Additionally, John is actively researching the use of Retrieval Augmentation Generation in LLMs to enhance cyber threat hunting and Agentic AI, and MCP using large sets of metadata to do attacker attribution. John is co-author of OWASP's GenAI Incident Response Guide 1.0.</p>
                     <p>John has a Master's degree in Information Assurance from The University of Pittsburgh and is a GIAC Certified Forensics Analyst (GCFA). He has taught Computer Security, Malware Analysis, and IT Forensics in a university setting since 2010. John also served a six-year tenure as the President of the ISC2 Pittsburgh Chapter.</p>
                     <p style="margin-top: 1rem;"><strong>Zachary Jones</strong> - Bio to be added</p></div>`,
+                photo: "",
                 isKeynote: false
             }
         };
@@ -592,11 +651,13 @@
             if (!talk) return;
 
             const modalClass = talk.isKeynote ? 'keynote-modal' : '';
+            const photoHTML = talk.photo ? `<img src="${talk.photo}" alt="${talk.speaker}" class="modal-speaker-photo">` : '';
             const modalHTML = `
                 <div class="modal active" id="modal-${talkId}" onclick="closeModalOnBackdrop(event, '${talkId}')">
                     <div class="modal-content ${modalClass}">
                         <button class="close-modal" onclick="closeModal('${talkId}')" aria-label="Close modal">&times;</button>
                         <div class="modal-header">
+                            ${photoHTML}
                             <h2>${talk.title}</h2>
                             <div class="speaker-name">${talk.speaker}</div>
                             <div class="time"><i class="fas fa-clock"></i> ${talk.time}</div>
