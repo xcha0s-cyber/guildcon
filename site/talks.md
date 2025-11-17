@@ -114,6 +114,27 @@ Talk: Speaker Name: ART  Time 17:00 - 17:45 Q/A 15 mintes  Talk Title : " Beyond
 
 
 
-Talk: Speaker Name: TAB  Time 18:00 - 18:45 Q/A 15 mintes  Talk Title : Description :  Speaker Bio:
+Talk: Speaker Name:  Giselle M Akal  Time 18:00 - 18:15   Talk Title :" Per Ardua Ad Astr" Description :"“Per Ardua Ad Astra” shares Giselle Akal’s path from stay-at-home mom to IT Help Desk Technician advancing through the Buffalo Center for Arts & Technology’s (BCAT) CompTIA stackable-certification Pathway. Balancing full-time work, evening cyber classes, and late-night labs, she shows how structured cert tracks and accessible training pipelines empower nontraditional learners to break into cybersecurity and strengthen the future workforce.
+
+"  Speaker Bio:"Speaker: Giselle M Akal
+
+IT Help Desk Technician | BCAT CompTIA Pathway | Security+ in Progress
+
+Featured by Buffalo Toronto Public Media
+
+Advocating accessible cybersecurity training for adult and nontraditional learners"
+
+
+
+Talk: Speakers Names: John Franolich  &  Zachary Jones  Time 18:15 - 19:00 Q/A 15 mintes  Talk Title : "Accelerate [Cyber Security] Workforce Readiness by Leveraging ML for Adaptive Learning" Description : "This talk proposes a novel approach to AI-enabled learning models, which uncover efficiencies and economics of the learning process. We will discuss how this open the doors to a new approach to student learning.
+
+By leveraging ML structures intrinsic to AI, we can facilitate student learning in ways that have historically been inaccessible. Similar to how LLMs process information, these structures can translate into new learning dynamics and efficiencies. Thus: Learning Economies.
+
+We will approach this topic from the perspective of Cybersecurity practitioner and educators. The NIST 800-181 structure, Workforce Framework for Cybersecurity (NICE Framework) and development, includes KSA (knowledge skills abilities), testable statements, measures, and related roles.
+
+We will cover four (4) pillars of Learning Economies: depth, breath, granular, and emergent. The first three bear comparison to traditional learning paths of PhD research programs, multi-degree programs, and vocational programs.
+
+This presentation will explore the value in actively engaging AI technology to enhance educators' ability to deliver outcomes across an increasingly diverse body of students and adaptive programs. AI can support educators with templates, and frameworks, that provide adaptive measures of students' development of critical thinking skills. This approach is especially important for accelerating the development of industry competencies for a rapidly changing world."   Speakers Bios:   "John Franolich has 20 years of security experience and has worked in every industry vertical. Successful AI projects John has led include securing Google Cloud Platform for an FDA-regulated digital Radiology Type I Medical Device and Financial Modeling in secure Microsoft Azure environments for a large financial institution. John currently works for a global corporation doing cyber threat intelligence investigating cyber criminals and nation state actors. Additionally, John is actively researching the use of Retrieval Augmentation Generation in LLMs to enhance cyber threat hunting and Agentic AI, and MCP using large sets of metadata to do attacker attribution. John is co-author of OWASP's GenAI Incident Response Guide 1.0. John has a Master's degree in Information Assurance from The University of Pittsburgh and is a GIAC Certified Forensics Analyst (GCFA). He has taught Computer Security, Malware Analysis, and IT Forensics in a university setting since 2010. John also served a six-year tenure as the President of the ISC2 Pittsburgh Chapter." ,
+
 
 
